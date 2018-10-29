@@ -47,22 +47,31 @@ public class CVSReader {
 			initalReadStack.push(line);
 		}
 		
-		String[][] finalArray = parseStack(initalReadStack, ',');
+		String[][] finalArray = parseStack(initalReadStack.clone(), ',');
 		
 		reader.close();
 		return finalArray;
 	}
 
 
-	/**TODO
+	/**
 	 * @description
 	 * 	parses stack of strings into a 2D array based on the passed separator
 	 * @param stack
 	 * @param separator
+	 * @post
+	 * 	will destroy the stack you pass it
 	 * @return
 	 */
 	private static String[][] parseStack(Stack<String> stack, char separator) {
-		// TODO Auto-generated method stub
-		return null;
+		int stackSize = stack.getCount();
+		String[][] output = new String[stackSize][4];
+		stack = stack.getReversed();
+		String line;
+		for(int i = 0; i <= stackSize; i++) {
+			line = stack.pop();
+			output[i] = line.split("(" + separator + ")");
+		}
+		return output;
 	}
 }
