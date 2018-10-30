@@ -62,11 +62,11 @@ public class ResponseNode {
 	 * @param question the question that was prompted to a user.
 	 * @pre The question is not a null String.
 	 * @post The question of the node will have been set.
-	 * @throws IllegalArgumentException if the argument is null.
+	 * @throws NullPointerException if the argument is null.
 	 */
 	public void setQuestion(String question) {
-		if(question.equals(null))
-			throw new IllegalArgumentException("ResponseNode Class: Cannot set a null question.");
+		if(question == null)
+			throw new NullPointerException("ResponseNode Class: Null question provided.");
 		this.question = question;
 	}
 	
@@ -75,9 +75,12 @@ public class ResponseNode {
 	 * @param answer the users response to a question.
 	 * @pre answer must either be "yes" or "no".
 	 * @post The answer of the node will have been set.
+	 * @throws NullPointerException if the argument is a null String.
 	 * @throws IllegalArgumentException if the argument is anything other than "yes" or "no".
 	 */
 	public void setAnswer(String answer) {
+		if(answer == null)
+			throw new NullPointerException("ReponseNode Class: Null answer provided.");
 		answer.toLowerCase();
 		
 		if(answer.equals("yes"))
