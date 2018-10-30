@@ -11,6 +11,12 @@ public class BTNode<T> {
 		position = initPos;
 		data = initData;
 	}
+	
+	public BTNode() {
+		data = null;
+		left = null;
+		right = null;
+	}
 	public void insert(T headPos, T leftPos,
 			T leftData, T rightPos, T rightData){
 		if(position.equals(headPos)) {
