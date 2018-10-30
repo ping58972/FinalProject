@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import edu.century.finalproject.BTNode;
 
-public class CVSReader {
+public class CSVReader {
 
 	
 	/**TODO
@@ -21,16 +21,29 @@ public class CVSReader {
 	 */
 	public static BTNode<String> readFile(String target) throws IOException{
 		
-		String[][] CVSArray = readIn(target);
-		
-		
-		
-		
-		return null;
+		String[][] csvArray = readIn(target);
+		BTNode<String> output = createTree(csvArray);		
+		return output;
 		
 	}
 
-	
+	/**
+	 * @description
+	 * 	takes a 2d array of strings and creates the data tree
+	 * @param cVSArray
+	 * @return
+	 */
+	protected static BTNode<String> createTree(String[][] csvArray) {
+//		BTNode<String>[] nodeArray = new BTNode<String>[csvArray.length];
+//		
+//		for(int i = 0; i < nodeArray.length; i++) {
+//			
+//		}
+		
+		return null;
+	}
+
+
 	/**
 	 * @description
 	 * 	loads the target CVS file into a 2D array
@@ -38,7 +51,7 @@ public class CVSReader {
 	 * @return
 	 * @throws FileNotFoundException 
 	 */
-	private static String[][] readIn(String target) throws IOException {
+	protected static String[][] readIn(String target) throws IOException {
 
 		BufferedReader reader = new BufferedReader(new FileReader(target));
 		Stack<String> initalReadStack = new Stack<String>();
@@ -63,7 +76,7 @@ public class CVSReader {
 	 * 	will destroy the stack you pass it
 	 * @return
 	 */
-	private static String[][] parseStack(Stack<String> stack, char separator) {
+	protected static String[][] parseStack(Stack<String> stack, char separator) {
 		int stackSize = stack.getCount();
 		String[][] output = new String[stackSize][4];
 		stack = stack.getReversed();
