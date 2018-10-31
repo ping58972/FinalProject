@@ -16,7 +16,7 @@ public class ResponseLinkedQueue {
 	 * Constructor for creating a ResponseQueue object.
 	 * @param
 	 * @pre
-	 * @post A ResponseLinkedQueue will have been created with the front and rear set to null and the count set to zero.
+	 * @post A ResponseLinkedQueue object will have been created with the front and rear set to null and the count set to zero.
 	 */
 	public ResponseLinkedQueue() {
 		front = null;
@@ -25,10 +25,10 @@ public class ResponseLinkedQueue {
 	}
 	
 	/**
-	 * Adds a ReponseNode to the front of the queue.
+	 * Adds a node to the rear of the queue.
 	 * @param question the ResponseNode being added to the list.
 	 * @pre question is not null.
-	 * @post the ReponseNode will have been added to the queue and the node count incremented by one.
+	 * @post the node will have been added to the queue and the node count incremented by one.
 	 * @throws NullPointerException if the argument is null.
 	 */
 	public void add(ResponseNode question) {
