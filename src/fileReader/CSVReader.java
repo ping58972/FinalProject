@@ -9,6 +9,7 @@ import edu.century.finalproject.BTNode;
 
 public class CSVReader {
 
+	private static final int DATA_WIDTH = 4;
 	
 	/**TODO
 	 * @description 
@@ -19,10 +20,10 @@ public class CSVReader {
 	 * @throws IOException
 	 * 	can throw a IOException if the target file can't be read
 	 */
-	public static BTNode<String> readFile(String target) throws IOException{
+	public static BTNode readFile(String target) throws IOException{
 		
 		String[][] csvArray = readIn(target);
-		BTNode<String> output = createTree(csvArray);		
+		BTNode output = createTree(csvArray);		
 		return output;
 		
 	}
@@ -33,16 +34,16 @@ public class CSVReader {
 	 * @param cVSArray
 	 * @return
 	 */
-	protected static BTNode<String> createTree(String[][] csvArray) {
+	protected static BTNode createTree(String[][] csvArray) {
 		BTNode[] nodeArray = new BTNode[csvArray.length];
 		
 		for(int i = 0; i < nodeArray.length; i++) {
-			nodeArray[i] = new BTNode<String>(csvArray[i][1]);
+			nodeArray[i] = new BTNode(csvArray[i][1]);
 		}
 		
 		for(int i = 0; i < nodeArray.length; i++) {
-			nodeArray[i].setLeftLink(nodeArray[findLink(csvArray[i][2])]);
-			nodeArray[i].setRightLink(nodeArray[findLink(csvArray[i][3])]);
+			nodeArray[i].setLeft(nodeArray[findLink(csvArray[i][2])]);
+			nodeArray[i].setRight(nodeArray[findLink(csvArray[i][3])]);
 		}
 		
 		return nodeArray[0];
@@ -76,7 +77,7 @@ public class CSVReader {
 			initalReadStack.push(line);
 		}
 		
-		String[][] finalArray = parseStack(initalReadStack.clone(), ',');
+		String[][] finalArray = parseStack(initalReadStack.clone(), ",");
 		
 		reader.close();
 		return finalArray;
@@ -92,14 +93,17 @@ public class CSVReader {
 	 * 	will destroy the stack you pass it
 	 * @return
 	 */
-	protected static String[][] parseStack(Stack<String> stack, char separator) {
+	protected static String[][] parseStack(Stack<String> stack, String separator) {
 		int stackSize = stack.getCount();
-		String[][] output = new String[stackSize][4];
+		String[][] output = new String[stackSize][DATA_WIDTH];
 		stack = stack.getReversed();
 		String line;
-		for(int i = 0; i <= stackSize; i++) {
+		for(int i = 0; i < stackSize; i++) {
 			line = stack.pop();
-			output[i] = line.split("(" + separator + ")");
+			String[] heldArray = line.split(separator);
+			for(int j = 0; j < heldArray.length; j++ ) {
+				output[i][j] = heldArray[j];
+			}
 		}
 		return output;
 	}
