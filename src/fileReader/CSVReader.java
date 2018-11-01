@@ -34,15 +34,31 @@ public class CSVReader {
 	 * @return
 	 */
 	protected static BTNode<String> createTree(String[][] csvArray) {
-//		BTNode<String>[] nodeArray = new BTNode<String>[csvArray.length];
-//		
-//		for(int i = 0; i < nodeArray.length; i++) {
-//			
-//		}
+		BTNode[] nodeArray = new BTNode[csvArray.length];
 		
-		return null;
+		for(int i = 0; i < nodeArray.length; i++) {
+			nodeArray[i] = new BTNode<String>(csvArray[i][1]);
+		}
+		
+		for(int i = 0; i < nodeArray.length; i++) {
+			nodeArray[i].setLeftLink(nodeArray[findLink(csvArray[i][2])]);
+			nodeArray[i].setRightLink(nodeArray[findLink(csvArray[i][3])]);
+		}
+		
+		return nodeArray[0];
 	}
 
+
+	protected static int findLink(String input) {
+		int output = 0;
+		try {
+			output = Integer.parseInt(input);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return output;
+	}
 
 	/**
 	 * @description
