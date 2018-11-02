@@ -20,7 +20,26 @@ class CVSReaderTest {
 
 	@Test
 	void testReadIn() {
-		fail("Not yet implemented");
+		String target = "D:/GitHub/CSCI2082/FinalProject/src/fileReader/TestVeteran.csv";
+		Stack<String> testStack = new Stack<String>();
+		testStack.push("H,Have you served on Active Duty for purposes other than training?,Q002,Q001");
+		testStack.push("Q001,Other flowchart,,");
+		testStack.push("Q002,Did you receive an honorable discharge?,Q003,Q004");
+		testStack.push("Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,Q008,Q005");
+		String[][] expected = CSVReader.parseStack(testStack, ",");
+		try {
+			String[][] actual = CSVReader.readIn(target);
+			
+			for(int i = 0; i < 2; i++) {
+				for(int j = 0; j < 4; j++) {
+					assertEquals(actual[i][j],expected[i][j]);
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test
