@@ -42,8 +42,12 @@ public class CSVReader {
 		}
 		
 		for(int i = 0; i < nodeArray.length; i++) {
-			nodeArray[i].setLeft(nodeArray[findLink(csvArray[i][2])]);
-			nodeArray[i].setRight(nodeArray[findLink(csvArray[i][3])]);
+			if (csvArray[i][2] != null) {
+				nodeArray[i].setLeft(nodeArray[findLink(csvArray[i][2])]);
+			}
+			if (nodeArray[findLink(csvArray[i][3])] != null) {
+				nodeArray[i].setRight(nodeArray[findLink(csvArray[i][3])]);
+			}		
 		}
 		
 		return nodeArray[0];
@@ -52,11 +56,12 @@ public class CSVReader {
 
 	protected static int findLink(String input) {
 		int output = 0;
+		input = input.substring(1);
 		try {
 			output = Integer.parseInt(input);
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			return output;
 		}
 		return output;
 	}

@@ -3,3 +3,23 @@ Q001,Other flowchart,,
 Q002,Did you receive an honorable discharge?,Q003,Q004
 Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,Q008,Q005
 Q004,AD3 - Did you recieve a discharge that was other than honorable?,Q006,Q007
+Q005,Were you discharged with a service connected disability after 30 days of service?,Q008,Q022
+Q006,Do you meet MN residency definition?,Q012,Q013
+Q007,Benefit - NONE,,
+Q008,Do you have a service connected disability of at least20% rating?,Q009,Q014
+Q009,Are you currently using Chapter 31?,Q010,Q011
+Q010,Benefit - Chapter 31,,
+Q011,Do you know about Chapter 31?,Q014,Q021
+Q012,Benefit - MN GI Bill,,
+Q013,Benefit - NONE,,
+Q014,Did you serve on Active Duty for 36 months or more?,Q015,Q018
+Q015,Do you meet MN residency definition?,Q016,Q017
+Q016,Benefit - Chapter 33 but you may want MN GI Bill - talk to Shannon,,
+Q017,Benefit - Chapter 33,,
+Q018,Do you meet MN residency definition?,Q019,Q020
+Q019,Benefit - Chapter 33 & MN GI,,
+Q020,Benefit - Chapter 33 Bill,,
+Q021,See Shannon,,
+Q022,Do you meet MN residency definition?,Q023,Q024
+Q023,Benefit - MN GI Bill,,
+Q024,Benefit - NONE,,
