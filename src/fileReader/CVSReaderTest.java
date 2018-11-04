@@ -21,11 +21,17 @@ class CVSReaderTest {
 		testStack.push("H,Have you served on Active Duty for purposes other than training?,Q002,Q001");
 		testStack.push("Q001,Other flowchart,,");
 		testStack.push("Q002,Did you receive an honorable discharge?,Q003,Q004");
-		testStack.push("Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,Q008,Q005");
+		testStack.push("Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,,Q005");
+		testStack.push("Q004,AD3 - Did you recieve a discharge that was other than honorable?,Q006,Q007");
+		testStack.push("Q005,Were you discharged with a service connected disability after 30 days of service?,,");
+		testStack.push("Q006,Do you meet MN residency definition?,,");
+		testStack.push("Q007,Benefit - NONE,,");
+		
+																																										
 		String[][] CSVArray = CSVReader.parseStack(testStack, ",");
 		BTNode actual = CSVReader.createTree(CSVArray);
 		
-		BTNode expected = new BTNode("Have you served onActive Duty for purposes other than training?");
+		BTNode expected = new BTNode("Have you served on Active Duty for purposes other than training?");
 		expected.setRight(new BTNode("Other flowchart"));
 		BTNode two = new BTNode("Did you receive an honorable discharge?");
 		expected.setLeft(two);
@@ -46,12 +52,16 @@ class CVSReaderTest {
 
 	@Test
 	void testReadIn() {
-		String target = "D:/GitHub/CSCI2082/FinalProject/src/fileReader/TestVeteran.csv";
+		String target = ".\\src\\fileReader\\TestVeteran.csv";
 		Stack<String> testStack = new Stack<String>();
 		testStack.push("H,Have you served on Active Duty for purposes other than training?,Q002,Q001");
 		testStack.push("Q001,Other flowchart,,");
 		testStack.push("Q002,Did you receive an honorable discharge?,Q003,Q004");
-		testStack.push("Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,Q008,Q005");
+		testStack.push("Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,,Q005");
+		testStack.push("Q004,AD3 - Did you recieve a discharge that was other than honorable?,Q006,Q007");
+		testStack.push("Q005,Were you discharged with a service connected disability after 30 days of service?,,");
+		testStack.push("Q006,Do you meet MN residency definition?,,");
+		testStack.push("Q007,Benefit - NONE,,");
 		String[][] expected = CSVReader.parseStack(testStack, ",");
 		try {
 			String[][] actual = CSVReader.readIn(target);
@@ -96,7 +106,7 @@ class CVSReaderTest {
 	@Test
 	void testFindLink() {
 		int expected = 1;
-		int actual = CSVReader.findLink("001");
+		int actual = CSVReader.findLink("Q001");
 		assertEquals(expected,actual);
 	}
 

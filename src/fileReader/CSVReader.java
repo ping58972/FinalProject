@@ -11,7 +11,7 @@ public class CSVReader {
 
 	private static final int DATA_WIDTH = 4;
 	
-	/**TODO
+	/**
 	 * @description 
 	 * 	Takes a String that represents the location on disk of a CSV file that contains the stored question flow and then loads it into a tree 
 	 * @param target
@@ -42,10 +42,10 @@ public class CSVReader {
 		}
 		
 		for(int i = 0; i < nodeArray.length; i++) {
-			if (csvArray[i][2] != null) {
+			if (csvArray[i][2] != null && findLink(csvArray[i][2]) != 0) {
 				nodeArray[i].setLeft(nodeArray[findLink(csvArray[i][2])]);
 			}
-			if (nodeArray[findLink(csvArray[i][3])] != null) {
+			if (csvArray[i][3] != null && findLink(csvArray[i][3]) != 0) {
 				nodeArray[i].setRight(nodeArray[findLink(csvArray[i][3])]);
 			}		
 		}
@@ -53,15 +53,26 @@ public class CSVReader {
 		return nodeArray[0];
 	}
 
-
+	
+	/**
+	 * @description
+	 * 	takes a string that represents a node and finds the index for that node
+	 * @param input
+	 * 	a String in the format "Q###" "###" being the index of the target node 
+	 * @return
+	 * 	a integer that is the index of the target node in nodeArray
+	 */
 	protected static int findLink(String input) {
+		if (input.equals("")) {
+			return 0;
+		}
 		int output = 0;
 		input = input.substring(1);
 		try {
 			output = Integer.parseInt(input);
 		}
 		catch(Exception e){
-			return output;
+			return 0;
 		}
 		return output;
 	}
@@ -86,6 +97,8 @@ public class CSVReader {
 		
 		reader.close();
 		return finalArray;
+		
+		
 	}
 
 
