@@ -11,20 +11,20 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-public class QuiestionGUI<T> extends JFrame implements ActionListener {
+public class QuiestionGUI extends JFrame implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	BTNode<T> node;
+	BTNode node;
 	
 	/**
 	 * Create the frame.
 	 * @param <T>
 	 */
-	public QuiestionGUI(BTNode<T> data) {
+	public QuiestionGUI(BTNode data) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

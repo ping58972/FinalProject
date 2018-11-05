@@ -14,7 +14,7 @@ public class Driver {
 public static void main(String[] args) {
 		
 		ArrayList<String[]> arr2D = new ArrayList<>();
-		BTNode<String> veteran;
+		BTNode veteran;
 		try {
 			
 			Scanner read = new Scanner(new File("veteran.csv"));
@@ -35,7 +35,7 @@ public static void main(String[] args) {
 			e.printStackTrace();
 		}
 
-		veteran = new BTNode<>(arr2D.get(0)[0], arr2D.get(0)[1]);
+		veteran = new BTNode(arr2D.get(0)[0], arr2D.get(0)[1]);
 		//System.out.println(arr2D.get(0)[0]);
 		for(String[] rows : arr2D) {
 			if(rows[2]!=null && rows[3] != null) {
@@ -55,7 +55,7 @@ public static void main(String[] args) {
 		}
 		//veteran.printAll();
 		//veteran.printYN();
-		QuiestionGUI<String> frame = new QuiestionGUI<>(veteran);
+		QuiestionGUI frame = new QuiestionGUI(veteran);
 	}
 
 
