@@ -100,6 +100,12 @@ public class QuestionView extends VBox{
 		}
 		
 		responseQueue.add(new ResponseNode(question, answer));
+		
+		//If the user has reached a leaf of the tree, disable the buttons.
+		if(questionCursor.getLeft() == null && questionCursor.getRight() == null) {
+			this.yesBtn.setDisable(true);
+			this.noBtn.setDisable(true);
+		}
 		setQuestion();
 	}
 	
