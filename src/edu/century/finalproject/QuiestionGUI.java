@@ -19,7 +19,7 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	BTNode node;
-	
+	JLabel lblNewLabel;
 	/**
 	 * Create the frame.
 	 * @param <T>
@@ -31,8 +31,12 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		if (data !=null) {
+			lblNewLabel = new JLabel(data.getData().toString());
+			
+		}else
+			lblNewLabel = new JLabel("No more Quiestion!");
 		
-		JLabel lblNewLabel = new JLabel(data.getData().toString());
 		contentPane.add(lblNewLabel, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
