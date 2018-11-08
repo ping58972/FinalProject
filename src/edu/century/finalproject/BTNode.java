@@ -33,7 +33,9 @@ public class BTNode {
 		this.additionalData = additionalData;
 		if(additionalData != null)
 			additionalFlag = true;
-		
+		else{
+			additionalFlag = false;
+		}
 		left = null;
 		right = null;
 	}
