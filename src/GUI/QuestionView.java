@@ -114,7 +114,10 @@ public class QuestionView extends VBox{
 	 * @post the questionLabel's text will be the set to the data of the questionCursor.
 	 */
 	private void setQuestion() {
-		questionLabel.setText(questionCursor.getData());
+		if(questionCursor.getAdditionalFlag())
+			questionLabel.setText(questionCursor.getData() + "\n" + questionCursor.getAdditionalData());
+		else
+			questionLabel.setText(questionCursor.getData());
 	}
 	
 	

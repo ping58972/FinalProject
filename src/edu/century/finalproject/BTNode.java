@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class BTNode {
 //	private T position;
 	private  String data;
+	private String additionalData;
+	private boolean additionalFlag;
 //	private BTNode<T> left, right;
 	private BTNode left, right;
 //	public BTNode(T initPos, T initData) {
@@ -21,6 +23,17 @@ public class BTNode {
 	
 	public BTNode(String data) {
 		this.data = data;
+		additionalFlag = false;
+		left = null;
+		right = null;
+	}
+	
+	public BTNode(String data, String additionalData) {
+		this.data = data;
+		this.additionalData = additionalData;
+		if(additionalData != null)
+			additionalFlag = true;
+		
 		left = null;
 		right = null;
 	}
@@ -41,7 +54,11 @@ public class BTNode {
 //		
 //	}
 	public void printAll() {
+													
 		System.out.println(data.toString());
+		if(additionalFlag == true)
+			System.out.println(additionalData.toString());
+		
 		if(left != null) left.printAll();
 		if(right != null) right.printAll();
 		
@@ -49,7 +66,11 @@ public class BTNode {
 
 	public void printYN() {
 		Character yn = 'q';
+		
 		System.out.println(data.toString());
+		if(additionalFlag == true)
+			System.out.println(additionalData.toString());
+		
 		Scanner input = new Scanner(System.in);
 		yn = input.next().charAt(0);
 		if(yn.equals('y') ) {
@@ -77,6 +98,26 @@ public class BTNode {
 
 	public void setData(String data) {
 		this.data = data;
+	}
+	
+	public String getAdditionalData() {
+		if(additionalFlag == true)
+			return additionalData;
+		else
+			return null;
+	}
+	
+	public void setAdditionalData(String additionalData) {
+		this.additionalData = additionalData;
+		
+		if(additionalData == null)
+			additionalFlag = false;
+		else
+			additionalFlag = true;
+	}
+	
+	public boolean getAdditionalFlag() {
+		return additionalFlag;
 	}
 
 //	public BTNode<T> getLeft() {
