@@ -1,2 +1,2 @@
-Century Orange: R242, G100, B36
+Century Orange: R224, G82, B6
 Century Blue: R76, G119, B148
