@@ -27,6 +27,11 @@ public class CSVReader {
 		return output;
 		
 	}
+	
+	public static BTNode[] readFileAsArray(String target) throws IOException{
+		String[][]csvArray = readIn(target);
+		return getNodeArray(csvArray);
+	}
 
 	/**
 	 * @description
@@ -35,8 +40,21 @@ public class CSVReader {
 	 * @return
 	 */
 	protected static BTNode createTree(String[][] csvArray) {
-		BTNode[] nodeArray = new BTNode[csvArray.length];
+		BTNode[] nodeArray = getNodeArray(csvArray);
 		
+		return nodeArray[0];
+	}
+	
+	
+	/**
+	 * @description
+	 * 	creates the nodes puts them into an array and then connects the links 
+	 * @param csvArray
+	 * @return
+	 */
+	protected static BTNode[] getNodeArray(String[][] csvArray) {
+		BTNode[] nodeArray = new BTNode[csvArray.length];
+			
 		for(int i = 0; i < nodeArray.length; i++) {
 			nodeArray[i] = new BTNode(csvArray[i][1]);
 		}
@@ -50,7 +68,7 @@ public class CSVReader {
 			}		
 		}
 		
-		return nodeArray[0];
+		return nodeArray;
 	}
 
 	
