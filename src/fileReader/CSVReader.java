@@ -28,6 +28,14 @@ public class CSVReader {
 		
 	}
 	
+	/**
+	 * @description
+	 * 	the same as readFile except that it returns the BT as an array,
+	 *  instead of just giving you the head node
+	 * @param target
+	 * @return
+	 * @throws IOException
+	 */
 	public static BTNode[] readFileAsArray(String target) throws IOException{
 		String[][]csvArray = readIn(target);
 		return getNodeArray(csvArray);
