@@ -83,6 +83,7 @@ public class BTNode {
 			if (right!=null)
 				right.printYN();
 		}
+		input.close();
 		
 	}
 
