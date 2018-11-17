@@ -3,8 +3,7 @@ package GUI;
 import java.io.IOException;
 
 import edu.century.finalproject.BTNode;
-import edu.century.finalproject.ResponseLinkedQueue;
-import edu.century.finalproject.ResponseNode;
+import edu.century.finalproject.CreatePDF;
 import fileReader.CSVReader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -23,6 +22,7 @@ public class QuestionView extends VBox{
 	private BTNode questionCursor;
 	private ResponseLinkedQueue responseQueue;
 	
+	private CreatePDF createPDF;
 	
 	/**
 	 * Constructor to create the QuestionUI
@@ -44,6 +44,9 @@ public class QuestionView extends VBox{
 		
 		setDisplay();
 		setQuestion();
+		
+		//instance object for create PDF
+		createPDF = new CreatePDF("Jonh Smith");
 	
 	}
 	
@@ -99,12 +102,18 @@ public class QuestionView extends VBox{
 			questionCursor = questionCursor.getRight();
 		}
 		
+		//add questions and answers to pdf object.
+		createPDF.add(question, answer);
+		
 		responseQueue.add(new ResponseNode(question, answer));
 		
 		//If the user has reached a leaf of the tree, disable the buttons.
 		if(questionCursor.getLeft() == null && questionCursor.getRight() == null) {
 			this.yesBtn.setDisable(true);
 			this.noBtn.setDisable(true);
+			
+			//open the PDF file when reach the end of question.
+			createPDF.openPDF(questionCursor.getData());
 		}
 		setQuestion();
 	}

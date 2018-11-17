@@ -1,4 +1,4 @@
-package edu.century.finalproject;
+package GUI;
 
 /**
  * 
