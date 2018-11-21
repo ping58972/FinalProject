@@ -4,11 +4,13 @@ public class ResponseList {
 
 	private ResponseNode head;
 	private ResponseNode tail;
+	private int nodeCount;
 	
 	
 	public ResponseList() {
 		this.head = null;
 		this.tail = tail;
+		nodeCount = 0;
 	}
 	
 	
@@ -20,7 +22,21 @@ public class ResponseList {
 			tail.setLink(element);
 			tail = element;
 		}
+		nodeCount++;
+		
 	}
 	
+	public ResponseNode getHead() {
+		return this.head;
+	}
 	
+	public int size() {
+		return nodeCount;
+	}
+	public boolean isEmpty() {
+		if(nodeCount ==0)
+			return true;
+		else
+			return false;
+	}
 }
