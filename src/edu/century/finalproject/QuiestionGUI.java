@@ -20,6 +20,7 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	BTNode node;
 	JLabel lblNewLabel;
+	JButton btnNewButton, btnNo;
 	/**
 	 * Create the frame.
 	 * @param <T>
@@ -31,23 +32,36 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		if (data !=null) {
-			lblNewLabel = new JLabel(data.getData().toString());
-			
-		}else
-			lblNewLabel = new JLabel("No more Quiestion!");
+
 		
-		contentPane.add(lblNewLabel, BorderLayout.CENTER);
+		
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("YES");
-		btnNewButton.addActionListener(this);
-		panel.add(btnNewButton);
+		btnNewButton = new JButton("YES");
 		
-		JButton btnNo = new JButton("NO");
+				
+		btnNo = new JButton("NO");
 		btnNo.addActionListener(this);
+		btnNewButton.addActionListener(this);
+		
+		if (data.getLeft() !=null || data.getRight() != null) {
+			lblNewLabel = new JLabel(data.getData().toString());
+			
+		}else {
+			
+			btnNo.setEnabled(false);
+			btnNewButton = new JButton("Open_PDF");
+			btnNewButton.addActionListener(this);
+			//btnNewButton.setEnabled(false);
+			DriverGUI.pdf.close(data.getData().toString());
+			lblNewLabel = new JLabel("No more Quiestion!");
+			//DriverGUI.pdf.openPDF();
+		}
+		
+		contentPane.add(lblNewLabel, BorderLayout.CENTER);
+		panel.add(btnNewButton);
 		panel.add(btnNo);
 		this.node = data;
 		setVisible(true);
@@ -60,14 +74,17 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 		setVisible(false);
 		
 		if(command.equals("YES")) {
-			
+			DriverGUI.pdf.add(node.getData().toString(), "Yes");
 			new QuiestionGUI(node.getLeft());
 		}
 		if(command.equals("NO")) {
-			
+			DriverGUI.pdf.add(node.getData().toString(), "No");
 			new QuiestionGUI(node.getRight());
 		}
-		
+		if(command.equals("Open_PDF")) {
+			
+			DriverGUI.pdf.openPDF();
+		}
 	}
 
 }

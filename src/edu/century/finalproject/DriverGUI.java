@@ -31,6 +31,7 @@ public class DriverGUI extends JFrame implements ActionListener {
 	private static JFileChooser fileChooser = new JFileChooser();
 	private JLabel lblNewLabel;
 	private JButton btnStart;
+	static CreatePDF pdf; 
 	
 	public DriverGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,6 +63,7 @@ public class DriverGUI extends JFrame implements ActionListener {
 		panel_1.add(lblNewLabel);
 		btnStart.setEnabled(false);
 		setVisible(true);
+		pdf = new CreatePDF("Jonh Smith");
 	}
 public static void main(String[] args) {
 				
