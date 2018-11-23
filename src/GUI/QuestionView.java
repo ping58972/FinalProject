@@ -18,6 +18,7 @@ public class QuestionView extends VBox{
 	
 	Button yesBtn;
 	Button noBtn;
+	Button resultBtn;
 	Label questionLabel;
 
 	private BTNode questionTreeRoot;
@@ -31,7 +32,7 @@ public class QuestionView extends VBox{
 	 * @pre targetFile is a valid file name.
 	 * @post The UI will be displayed.
 	 */
-	public QuestionView(String targetFile) {
+	public QuestionView(String targetFile, Button resultBtn) {
 		
 		try {
 			questionTreeRoot = CSVReader.readFile(targetFile);
@@ -42,6 +43,7 @@ public class QuestionView extends VBox{
 		
 		responseList = new ResponseList();
 		questionCursor = questionTreeRoot;
+		this.resultBtn = resultBtn;
 		
 		setDisplay();
 		setQuestion();
@@ -76,9 +78,12 @@ public class QuestionView extends VBox{
 		
 		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
 		btnBox.getChildren().add(yesBtn);
-		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
+		btnBox.getChildren().add(this.resultBtn);
+			resultBtn.setVisible(false);
 		btnBox.getChildren().add(noBtn);
 		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
+		
+		
 		
 		this.getChildren().addAll(questionPane, btnBox);
 		
@@ -106,8 +111,9 @@ public class QuestionView extends VBox{
 		
 		//If the user has reached a leaf of the tree, disable the buttons.
 		if(questionCursor.getLeft() == null && questionCursor.getRight() == null) {
-			this.yesBtn.setDisable(true);
-			this.noBtn.setDisable(true);
+			this.yesBtn.setVisible(false);
+			this.noBtn.setVisible(false);
+			this.resultBtn.setVisible(true);
 			
 		}
 		setQuestion();
@@ -124,5 +130,20 @@ public class QuestionView extends VBox{
 			questionLabel.setText(questionCursor.getData());
 	}
 	
+	public ResponseList getResults() {
+		return responseList;
+	}
+	
+	public void resetView() {
+		ResponseList temp = new ResponseList();
+		responseList = temp;
+		
+		questionCursor = questionTreeRoot;
+		setQuestion();
+		
+		this.yesBtn.setVisible(true);
+		this.noBtn.setVisible(true);
+		this.resultBtn.setVisible(false);
+	}
 	
 }

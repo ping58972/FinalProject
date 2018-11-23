@@ -27,15 +27,17 @@ public class ResultView extends VBox {
 	
 	
 	
-	public ResultView(ResponseList responses) {
+	public ResultView(ResponseList responses, Button retakeBtn) {
+		this.setPrefHeight(600);
+		this.setPrefWidth(800);
+		
 		
 		this.responses = responses;
-		
 		responseArea = new TextFlow();
 		
-		
+		this.retakeBtn = retakeBtn;
 		setDisplay();
-		populate(responses.getHead());
+		populate();
 	}
 	
 	private void setDisplay() {
@@ -43,6 +45,8 @@ public class ResultView extends VBox {
 		HBox btnBox = new HBox();
 		
 		responsePane.setPrefWidth(this.getPrefWidth());
+		responsePane.setPrefHeight(this.getPrefHeight() * (2.0/3));
+		responsePane.setStyle("-fx-border-color: black");
 		responsePane.getChildren().add(responseArea);
 		
 		
@@ -50,9 +54,11 @@ public class ResultView extends VBox {
 		
 		pdfBtn = UtilityGUI.createButton("Print PDF of Results");
 		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
-		retakeBtn = UtilityGUI.createButton("Retake");
+
 		
 		btnBox.setPrefWidth(this.getPrefWidth());
+		btnBox.setPrefHeight(this.getPrefHeight() * (1.0/3));
+		btnBox.setStyle("-fx-border-color: black");
 		btnBox.getChildren().add(pdfBtn);
 		btnBox.getChildren().add(emailBtn);
 		btnBox.getChildren().add(retakeBtn);
@@ -61,12 +67,12 @@ public class ResultView extends VBox {
 		
 	}
 	
-	private void populate(ResponseNode head) {
+	public void populate() {
 		ResponseNode cursor;
-		if(head == null)
+		if(responses.getHead() == null)
 			return;
 		
-		for(cursor = head; cursor != null; cursor = cursor.getLink()) {
+		for(cursor = responses.getHead(); cursor != null; cursor = cursor.getLink()) {
 			Text question = new Text(cursor.getQuestion() + "\n");
 			Text response = new Text(cursor.getAnswer());
 			response.setFont(Font.font(null, FontWeight.BOLD, 12));
@@ -78,11 +84,18 @@ public class ResultView extends VBox {
 			}
 			
 			
-			responseArea.getChildren().addAll(question, new Text("Your Response: "), response, new Text("\n\n"));
+			responseArea.getChildren().addAll(question, new Text("\tYour Response: "), response, new Text("\n\n"));
 			
 		}
 		
+	}
+	
+	public void resetView() {
+		responseArea.getChildren().clear();
 		
 	}
 
+	public void setResponses(ResponseList responses) {
+		this.responses = responses;
+	}
 }
