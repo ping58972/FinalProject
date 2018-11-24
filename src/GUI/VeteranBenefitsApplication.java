@@ -1,5 +1,6 @@
 package GUI;
 
+import edu.century.finalproject.CreatePDF;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -37,6 +38,9 @@ public class VeteranBenefitsApplication extends Application {
 		retakeBtn.setOnAction(e -> {
 			window.setScene(questionScene);
 			questionView.resetView();
+			questionView.pdf.delectPDF();
+			questionView.pdf = new CreatePDF("John Smith");
+			//questionView.pdf.
 		});
 		
 		questionView = new QuestionView("veteran.csv", viewResultBtn);

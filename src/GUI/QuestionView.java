@@ -26,7 +26,7 @@ public class QuestionView extends VBox{
 	private BTNode questionCursor;
 	private ResponseList responseList;
 	static CreatePDF pdf;
-
+	
 	/**
 	 * Constructor to create the QuestionUI
 	 * @param targetFile the csv file for creating a question tree.
@@ -48,7 +48,7 @@ public class QuestionView extends VBox{
 		
 		setDisplay();
 		setQuestion();
-
+		pdf = new CreatePDF("John Smith");
 	
 	}
 	
@@ -85,7 +85,7 @@ public class QuestionView extends VBox{
 		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
 		
 		
-		pdf = new CreatePDF("John Smith");
+		
 		this.getChildren().addAll(questionPane, btnBox);
 		
 	}

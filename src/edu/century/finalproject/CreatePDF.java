@@ -12,6 +12,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -43,7 +45,7 @@ public class CreatePDF {
 	 * @Thorws 	: null exception.
 	 * */
 	public CreatePDF(String userName) {
-	setFilePath(DEST);
+	setFilePath(userName+"_"+DEST);
 	this.userName = userName;
 	initPdf(filePath, userName);
 	}
@@ -162,5 +164,14 @@ public class CreatePDF {
 					e.printStackTrace();
 				}
 	        }
+	}
+	public void delectPDF() {
+
+		try {
+			Files.delete(Paths.get(filePath));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
