@@ -3,6 +3,7 @@ package GUI;
 import java.io.IOException;
 
 import edu.century.finalproject.BTNode;
+import edu.century.finalproject.CreatePDF;
 //import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
@@ -24,7 +25,7 @@ public class QuestionView extends VBox{
 	private BTNode questionTreeRoot;
 	private BTNode questionCursor;
 	private ResponseList responseList;
-	
+	static CreatePDF pdf;
 
 	/**
 	 * Constructor to create the QuestionUI
@@ -84,7 +85,7 @@ public class QuestionView extends VBox{
 		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
 		
 		
-		
+		pdf = new CreatePDF("John Smith");
 		this.getChildren().addAll(questionPane, btnBox);
 		
 	}
@@ -106,7 +107,7 @@ public class QuestionView extends VBox{
 			questionCursor = questionCursor.getRight();
 		}
 		
-		
+		pdf.add(question, answer);
 		responseList.add(new ResponseNode(question, answer));
 		
 		//If the user has reached a leaf of the tree, disable the buttons.
@@ -114,7 +115,7 @@ public class QuestionView extends VBox{
 			this.yesBtn.setVisible(false);
 			this.noBtn.setVisible(false);
 			this.resultBtn.setVisible(true);
-			
+			pdf.close(questionCursor.getData().toString());
 		}
 		setQuestion();
 	}

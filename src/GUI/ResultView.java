@@ -54,7 +54,7 @@ public class ResultView extends VBox {
 		
 		pdfBtn = UtilityGUI.createButton("Print PDF of Results");
 		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
-
+		pdfBtn.setOnAction(e -> responseClicked(this.pdfBtn));
 		
 		btnBox.setPrefWidth(this.getPrefWidth());
 		btnBox.setPrefHeight(this.getPrefHeight() * (1.0/3));
@@ -98,4 +98,12 @@ public class ResultView extends VBox {
 	public void setResponses(ResponseList responses) {
 		this.responses = responses;
 	}
+	
+	public void responseClicked(Button btnClicked) {
+			
+		if(btnClicked.equals(this.pdfBtn)) {
+			QuestionView.pdf.openPDF();
+		}
+	}
+	
 }
