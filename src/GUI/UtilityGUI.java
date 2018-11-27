@@ -1,8 +1,11 @@
 package GUI;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 
 public class UtilityGUI {
@@ -14,7 +17,10 @@ public class UtilityGUI {
 	 */
 	public static Label createQuestionLabel() {
 		Label questionLabel = new Label();
-		
+		questionLabel.setPadding(new Insets(10,10,10,10));
+		questionLabel.setFont(Font.font("Arial", 24));
+		questionLabel.setTextAlignment(TextAlignment.CENTER);
+		questionLabel.setWrapText(true);
 		return questionLabel;
 	}
 	

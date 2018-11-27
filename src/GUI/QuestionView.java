@@ -3,16 +3,17 @@ package GUI;
 import java.io.IOException;
 
 import edu.century.finalproject.BTNode;
-import edu.century.finalproject.CreatePDF;
 //import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
 import fileReader.CSVReader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class QuestionView extends VBox{
@@ -25,8 +26,8 @@ public class QuestionView extends VBox{
 	private BTNode questionTreeRoot;
 	private BTNode questionCursor;
 	private ResponseList responseList;
-	static CreatePDF pdf;
 	
+
 	/**
 	 * Constructor to create the QuestionUI
 	 * @param targetFile the csv file for creating a question tree.
@@ -48,7 +49,7 @@ public class QuestionView extends VBox{
 		
 		setDisplay();
 		setQuestion();
-		pdf = new CreatePDF("John Smith");
+
 	
 	}
 	
@@ -57,7 +58,7 @@ public class QuestionView extends VBox{
 	 * @post The visual components are added to the QuestionView.
 	 */
 	private void setDisplay() {
-		Pane questionPane = new Pane();
+		StackPane questionPane = new StackPane();
 		HBox btnBox = new HBox();
 		
 		questionLabel = UtilityGUI.createQuestionLabel();
@@ -72,6 +73,7 @@ public class QuestionView extends VBox{
 		questionPane.setPrefWidth(800);
 		questionPane.setPrefHeight(400);
 		questionPane.getChildren().add(questionLabel);
+		questionPane.setAlignment(Pos.CENTER);
 		
 		btnBox.setStyle("-fx-border-color: black");
 		btnBox.setPrefHeight(200);
@@ -107,7 +109,7 @@ public class QuestionView extends VBox{
 			questionCursor = questionCursor.getRight();
 		}
 		
-		pdf.add(question, answer);
+		
 		responseList.add(new ResponseNode(question, answer));
 		
 		//If the user has reached a leaf of the tree, disable the buttons.
@@ -115,7 +117,7 @@ public class QuestionView extends VBox{
 			this.yesBtn.setVisible(false);
 			this.noBtn.setVisible(false);
 			this.resultBtn.setVisible(true);
-			pdf.close(questionCursor.getData().toString());
+			
 		}
 		setQuestion();
 	}
