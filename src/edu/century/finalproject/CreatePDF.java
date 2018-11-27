@@ -110,16 +110,16 @@ public class CreatePDF {
         
 	}
 	
-	/* public void add(String question, String answer)
+	/* public void add(ResponseList responses)
 	 * @Descriptions 
 	 * 		to add questions and answers to pdf file. 
 	 * @Parameter : 
-	 * 		question - String
-	 * 		answer - String
-	 * @Precondition : answer  and question must not null.
+	 * 		responses - ResponseList
+	 * 		
+	 * @Precondition : responses  and question must not null.
 	 * @Postcondition
 	 * @Return 
-	 * @Thorws 	:
+	 * @Thorws 	: ResponseList null
 	 * */
 	public void add(ResponseList responses) {	
 		ResponseNode cursor = responses.getHead();
