@@ -34,6 +34,7 @@ public class CreatePDF {
 	private Table table;
 	private int count;
 	
+	
 	/*public CreatePDF(String userName)
 	 * @Descriptions 
 	 * 		to construct and set user name by defeat file path. 
@@ -61,7 +62,7 @@ public class CreatePDF {
 	 * @Return
 	 * @Thorws 	: null exception.
 	 * */
-	public CreatePDF(String filePath, String userName) {
+	public CreatePDF(String filePath, String userName, ResponseList responses) {
 		setFilePath(filePath);
 		this.userName = userName;
 		initPdf(filePath, userName);
@@ -120,11 +121,17 @@ public class CreatePDF {
 	 * @Return 
 	 * @Thorws 	:
 	 * */
-	public void add(String question, String answer) {	
-        table.setWidth(UnitValue.createPercentValue(100));
-        table.addCell(new Cell().add(new Paragraph(String.valueOf(++count))));
-        table.addCell(new Cell().add(new Paragraph(question)));
-        table.addCell(new Cell().add(new Paragraph(answer)));     
+	public void add(ResponseList responses) {	
+		ResponseNode cursor = responses.getHead();
+		
+		for(cursor = responses.getHead(); cursor.getLink() != null; cursor = cursor.getLink()) {
+		    table.setWidth(UnitValue.createPercentValue(100));
+		    table.addCell(new Cell().add(new Paragraph(String.valueOf(++count))));
+		    table.addCell(new Cell().add(new Paragraph(cursor.getQuestion())));
+		    table.addCell(new Cell().add(new Paragraph(cursor.getAnswer()))); 
+		}
+		
+		close(this.userName + ", you may qualify for the following benefit(s): " + cursor.getQuestion());
 	}
 	
 	/* public void close(String lastAnswer)
@@ -139,7 +146,7 @@ public class CreatePDF {
 	 * */
 	public void close(String lastAnswer) {
 		document.add(table);
-		document.add(new Paragraph("You end with: "+ lastAnswer));
+		document.add(new Paragraph(lastAnswer));
 		//Close document
 		document.close();
 	}

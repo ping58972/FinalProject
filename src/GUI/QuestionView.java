@@ -112,8 +112,9 @@ public class QuestionView extends VBox{
 		
 		responseList.add(new ResponseNode(question, answer));
 		
-		//If the user has reached a leaf of the tree, disable the buttons.
+		//If the user has reached a leaf of the tree, add the benefit to the ResponseList and disable the buttons.
 		if(questionCursor.getLeft() == null && questionCursor.getRight() == null) {
+			responseList.add(new ResponseNode(questionCursor.getData(), "yes"));
 			this.yesBtn.setVisible(false);
 			this.noBtn.setVisible(false);
 			this.resultBtn.setVisible(true);

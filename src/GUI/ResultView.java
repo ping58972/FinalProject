@@ -1,5 +1,6 @@
 package GUI;
 
+import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
 import javafx.collections.ObservableList;
@@ -53,6 +54,12 @@ public class ResultView extends VBox {
 		this.getChildren().add(responsePane);
 		
 		pdfBtn = UtilityGUI.createButton("Print PDF of Results");
+		pdfBtn.setOnAction(e ->{
+			CreatePDF pdfResult = new CreatePDF("John Smith");
+			pdfResult.add(responses);
+			pdfResult.openPDF();
+			
+		});
 		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
 
 		
@@ -72,7 +79,7 @@ public class ResultView extends VBox {
 		if(responses.getHead() == null)
 			return;
 		
-		for(cursor = responses.getHead(); cursor != null; cursor = cursor.getLink()) {
+		for(cursor = responses.getHead(); cursor.getLink() != null; cursor = cursor.getLink()) {
 			Text question = new Text(cursor.getQuestion() + "\n");
 			Text response = new Text(cursor.getAnswer());
 			response.setFont(Font.font(null, FontWeight.BOLD, 12));
@@ -83,11 +90,11 @@ public class ResultView extends VBox {
 				response.setFill(Color.RED);
 			}
 			
-			
 			responseArea.getChildren().addAll(question, new Text("\tYour Response: "), response, new Text("\n\n"));
 			
 		}
 		
+		responseArea.getChildren().addAll(new Text("You may qualify for the following benefit(s): " + cursor.getQuestion()));
 	}
 	
 	public void resetView() {
