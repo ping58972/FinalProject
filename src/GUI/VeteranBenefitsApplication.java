@@ -21,8 +21,11 @@ public class VeteranBenefitsApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		window = stage;
-		window.setHeight(600);
+		window.setHeight(635);
 		window.setWidth(800);
+		
+		
+		
 		
 		Button viewResultBtn = UtilityGUI.createButton("View Results");
 		viewResultBtn.setOnAction(e -> {
@@ -37,13 +40,15 @@ public class VeteranBenefitsApplication extends Application {
 		retakeBtn.setOnAction(e -> {
 			window.setScene(questionScene);
 			questionView.resetView();
+			questionView.resize(800, 600);
 		});
 		
 		questionView = new QuestionView("veteran.csv", viewResultBtn);
 		resultView = new ResultView(questionView.getResults(), retakeBtn);
 		
-		questionScene = new Scene(questionView, 600, 800);
-		resultScene = new Scene(resultView, 600, 800);
+		questionScene = new Scene(questionView, 800, 600);
+		
+		resultScene = new Scene(resultView, 800, 600);
 		
 		window.setScene(questionScene);
 		window.show();

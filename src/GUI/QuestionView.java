@@ -42,7 +42,8 @@ public class QuestionView extends VBox{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		this.setPrefWidth(800);
+		this.setPrefHeight(600);
 		responseList = new ResponseList();
 		questionCursor = questionTreeRoot;
 		this.resultBtn = resultBtn;

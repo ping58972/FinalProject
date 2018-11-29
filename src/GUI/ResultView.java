@@ -4,6 +4,8 @@ import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -14,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 public class ResultView extends VBox {
@@ -61,16 +64,23 @@ public class ResultView extends VBox {
 			
 		});
 		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
-
+		emailBtn.setTextAlignment(TextAlignment.CENTER);
+		emailBtn.setWrapText(true);
+		
+		
 		
 		btnBox.setPrefWidth(this.getPrefWidth());
 		btnBox.setPrefHeight(this.getPrefHeight() * (1.0/3));
 		btnBox.setStyle("-fx-border-color: black");
+		btnBox.setPadding(new Insets(0,0,0,0));
+		btnBox.setAlignment(Pos.CENTER_LEFT);
+		
 		btnBox.getChildren().add(pdfBtn);
 		btnBox.getChildren().add(emailBtn);
 		btnBox.getChildren().add(retakeBtn);
 		
 		this.getChildren().add(btnBox);
+		
 		
 	}
 	
