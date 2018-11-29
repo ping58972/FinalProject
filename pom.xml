@@ -55,5 +55,10 @@
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.7.18</version>
     </dependency>
-</dependencies>
+    <dependency>
+    	<groupId>com.sun.mail</groupId>
+    	<artifactId>javax.mail</artifactId>
+    	<version>1.5.5</version>
+    </dependency>
+  </dependencies>
 </project>
