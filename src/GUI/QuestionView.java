@@ -69,17 +69,9 @@ public class QuestionView extends VBox{
 		
 		
 		yesBtn = UtilityGUI.createButton("YES");
-		yesBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
-						"-fx-font-weight: bold;" +
-						"-fx-text-fill: white;"  +
-						"-fx-background-radius: 10;");
 		yesBtn.setOnAction(e -> responseClicked(this.yesBtn));
 		
 		noBtn = UtilityGUI.createButton("NO");
-		noBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
-						"-fx-font-weight: bold;" +
-						"-fx-text-fill: white;"  +
-						"-fx-background-radius: 10;");
 		noBtn.setOnAction(e -> responseClicked(this.noBtn));
 		
 		questionPane.setStyle("-fx-background-color: white;");
@@ -157,6 +149,7 @@ public class QuestionView extends VBox{
 	}
 	
 	public void resetView() {
+		
 		ResponseList temp = new ResponseList();
 		responseList = temp;
 		

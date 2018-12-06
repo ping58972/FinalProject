@@ -29,19 +29,23 @@ public class VeteranBenefitsApplication extends Application {
 		
 		Button viewResultBtn = UtilityGUI.createButton("View Results");
 		viewResultBtn.setOnAction(e -> {
+			window.close();
 			window.setScene(resultScene);
 			resultView.resetView();
 			resultView.setResponses(questionView.getResults());
 			resultView.populate();
-			resultView.resize(800, 600);
+			window.show();
+			
 			
 		});
 		
 		Button retakeBtn = UtilityGUI.createButton("Retake");
 		retakeBtn.setOnAction(e -> {
-			window.setScene(questionScene);
+			window.close();
 			questionView.resetView();
-			questionView.resize(800, 600);
+			window.setScene(questionScene);
+			window.show();
+			
 		});
 		
 		questionView = new QuestionView("veteran.csv", viewResultBtn);

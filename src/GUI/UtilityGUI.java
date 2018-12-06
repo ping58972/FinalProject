@@ -34,7 +34,18 @@ public class UtilityGUI {
 	 */
 	public static Button createButton(String text) {
 		Button newBtn = new Button(text);
-		
+		newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+						"-fx-font-weight: bold;" +
+						"-fx-text-fill: white;"  +
+						"-fx-background-radius: 10;");
+		newBtn.setOnMouseEntered(e -> newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+				"-fx-font-weight: bold;" +
+				"-fx-text-fill: black;"  +
+				"-fx-background-radius: 10;"));
+		newBtn.setOnMouseExited(e -> newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+				"-fx-font-weight: bold;" +
+				"-fx-text-fill: white;"  +
+				"-fx-background-radius: 10;"));
 		newBtn.setPrefHeight(100);
 		newBtn.setPrefWidth(160);
 		
