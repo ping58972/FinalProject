@@ -33,6 +33,7 @@ public class VeteranBenefitsApplication extends Application {
 			resultView.resetView();
 			resultView.setResponses(questionView.getResults());
 			resultView.populate();
+			resultView.resize(800, 600);
 			
 		});
 		
