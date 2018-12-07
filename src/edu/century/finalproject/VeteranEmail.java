@@ -33,9 +33,9 @@ import javax.mail.internet.MimeMultipart;
 public class VeteranEmail {
 
     private String filenamePath; //set attachment file path.
-    private  String sourceEmail;// requires valid Gmail id
+    private  String sourceEmail;// requires valid Gmail id.
     private String password; // correct password for Gmail id
-    private String toEmail; // any destination email id
+    private String toEmail; // any destination email id.
     
     /*public VeteranEmail(String sourceEmail, String password, 
 	 * 	String toEmail, String filenamePath, String subject, String body)
@@ -111,7 +111,8 @@ public class VeteranEmail {
 	 * @Return
 	 * @Thorws 
 	 * */
-    public void generateEmailAndAttachment(Session session, String toEmail, String subject, String body) {   	
+    public void generateEmailAndAttachment(Session session, String toEmail, String subject, String body) { 
+    	
         try {
             MimeMessage crunchifyMessage = new MimeMessage(session);
             crunchifyMessage.setFrom(new InternetAddress(sourceEmail,
