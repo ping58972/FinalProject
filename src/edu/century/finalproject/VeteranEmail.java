@@ -96,4 +96,50 @@ public class VeteranEmail {
         };
         generateEmailAndAttachment(Session.getInstance(props, authentication),toEmail, subject, body); 
     }
+    
+    /*public void generateEmailAndAttachment(Session session, 
+	 * String toEmail, String subject, String body)
+	 * @Descriptions 
+	 * 		to generate Email And Attachment.
+	 * @Parameter: 
+	 * 		session - Session.
+	 * 		toEmail - String.
+	 * 		subject - String.
+	 * 		body - String.
+	 * @Precondition : all String not null.
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 
+	 * */
+    public void generateEmailAndAttachment(Session session, String toEmail, String subject, String body) {   	
+        try {
+            MimeMessage crunchifyMessage = new MimeMessage(session);
+            crunchifyMessage.setFrom(new InternetAddress(sourceEmail,
+                    "NoReply-CenturyCollege"));
+            crunchifyMessage.setReplyTo(InternetAddress.parse(sourceEmail, false));
+            crunchifyMessage.setSubject(subject, "UTF-8");
+            crunchifyMessage.setSentDate(new Date());
+            crunchifyMessage.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(toEmail, false));           
+            // Create the message body part
+            BodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setContent(body+"\nSent Data: " + new Date().toString(), "text/html");
+            // Create a multipart message for attachment
+            Multipart multipart = new MimeMultipart();
+            // Set text message part
+            multipart.addBodyPart(messageBodyPart);
+            messageBodyPart = new MimeBodyPart();
+            // Valid file location
+            messageBodyPart.setDataHandler(new DataHandler(new FileDataSource(filenamePath)));
+            messageBodyPart.setFileName(filenamePath);
+            multipart.addBodyPart(messageBodyPart);
+            crunchifyMessage.setContent(multipart);
+            // Finally Send message
+            Transport.send(crunchifyMessage);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 }
