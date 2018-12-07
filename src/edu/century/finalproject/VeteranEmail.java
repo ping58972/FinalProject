@@ -29,6 +29,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+
 public class VeteranEmail {
+
+    private String filenamePath; //set attachment file path.
+    private  String sourceEmail;// requires valid Gmail id
+    private String password; // correct password for Gmail id
+    private String toEmail; // any destination email id
+    
+
 
 }
