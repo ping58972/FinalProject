@@ -44,6 +44,20 @@ public class MainGUI extends JFrame implements ActionListener{
 	static String[] arg;
 	JLabel label_1;
 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					
+					MainGUI frame = new MainGUI();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		arg = args;
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -52,7 +66,7 @@ public class MainGUI extends JFrame implements ActionListener{
 		email = email_Field.getText();
 		if(!firstName.equals("") && !lastName.equals("") && !email.equals("")) {
 			
-		//VeteranBenefitsApplication.launch(arg, this);
+		VeteranBenefitsApplication.launch(arg, this);
 		}
 		if(firstName.equals("") || lastName.equals("") || email.equals("")) {
 		label_1.setText("Please Enter Your Collect Information!");
