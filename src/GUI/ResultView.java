@@ -3,6 +3,7 @@ package GUI;
 import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
+import edu.century.finalproject.VeteranEmail;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,20 +29,21 @@ public class ResultView extends VBox {
 	private Button retakeBtn;
 	
 	private ResponseList responses;
-	
+	private CreatePDF pdfResult;
 	
 	
 	public ResultView(ResponseList responses, Button retakeBtn) {
 		this.setPrefHeight(600);
 		this.setPrefWidth(800);
 		
-		
+		pdfResult = new CreatePDF(MainGUI.firstName +" "+ MainGUI.lastName, MainGUI.email);
 		this.responses = responses;
 		responseArea = new TextFlow();
 		
 		this.retakeBtn = retakeBtn;
-		setDisplay();
 		populate();
+		setDisplay();
+		
 	}
 	
 	private void setDisplay() {
@@ -55,18 +57,28 @@ public class ResultView extends VBox {
 		
 		
 		this.getChildren().add(responsePane);
+		 
 		
 		pdfBtn = UtilityGUI.createButton("Print PDF of Results");
 		pdfBtn.setOnAction(e ->{
-			CreatePDF pdfResult = new CreatePDF("John Smith");
-			pdfResult.add(responses);
+			
 			pdfResult.openPDF();
 			
 		});
-		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
+		emailBtn = UtilityGUI.createButton("Send Email -> Exit ");
 		emailBtn.setTextAlignment(TextAlignment.CENTER);
 		emailBtn.setWrapText(true);
-		
+		emailBtn.setOnAction(e ->{
+			
+			String sourceEmail = "finalprojecttest2018century@gmail.com";
+	    	String password = "2018Century";
+	    	String toEmail = MainGUI.email;//"pink58972@gmail.com";
+	    	String filenamePath = pdfResult.getFilePath();//"John Smith_Response.pdf";
+	    	String subject = "Sending Veteran Email  example with PDF Attachment";
+	    	String body = "Hi, " + MainGUI.firstName +" "+ MainGUI.lastName+"\n This is Sending Veteran Email  example with PDF Attachment for testing. \nThanks.\nBy Century College Veteran Services.\n";
+	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);	
+	    	System.exit(0);
+		});
 		
 		
 		btnBox.setPrefWidth(this.getPrefWidth());
@@ -105,6 +117,7 @@ public class ResultView extends VBox {
 		}
 		
 		responseArea.getChildren().addAll(new Text("You may qualify for the following benefit(s): " + cursor.getQuestion()));
+		pdfResult.add(responses);
 	}
 	
 	public void resetView() {
