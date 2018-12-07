@@ -69,14 +69,15 @@ public class ResultView extends VBox {
 		emailBtn.setTextAlignment(TextAlignment.CENTER);
 		emailBtn.setWrapText(true);
 		emailBtn.setOnAction(e ->{
-			
+			//Setup the information for sending email here.
 			String sourceEmail = "finalprojecttest2018century@gmail.com";
 	    	String password = "2018Century";
-	    	String toEmail = MainGUI.email;//"pink58972@gmail.com";
-	    	String filenamePath = pdfResult.getFilePath();//"John Smith_Response.pdf";
+	    	String toEmail = MainGUI.email;
+	    	String filenamePath = pdfResult.getFilePath();
 	    	String subject = "Sending Veteran Email  example with PDF Attachment";
 	    	String body = "Hi, " + MainGUI.firstName +" "+ MainGUI.lastName+"\n This is Sending Veteran Email  example with PDF Attachment for testing. \nThanks.\nBy Century College Veteran Services.\n";
 	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);	
+	    	//exit when click sending email button.
 	    	System.exit(0);
 		});
 		

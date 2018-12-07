@@ -172,7 +172,7 @@ public class CreatePDF {
 	public void openPDF() {
 		   if (Desktop.isDesktopSupported()) {
 			   File file = new File(filePath);
-		      //  file.getParentFile().mkdirs();
+		     
 	        	try {
 					Desktop.getDesktop().open(file);
 				} catch (IOException e) {
