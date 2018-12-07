@@ -30,6 +30,33 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.File;
-public class MainGUI {
+public class MainGUI extends JFrame implements ActionListener{
 
+	private JPanel contentPane;
+	private JTextField firstName_Field;
+	private JTextField lastName_Field;
+	private JTextField email_Field;
+	private Button button;
+	static String firstName;
+	static String lastName;
+	static String email;	
+	int xx,xy;	
+	static String[] arg;
+	JLabel label_1;
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		firstName = firstName_Field.getText();
+		lastName = lastName_Field.getText();
+		email = email_Field.getText();
+		if(!firstName.equals("") && !lastName.equals("") && !email.equals("")) {
+			
+		//VeteranBenefitsApplication.launch(arg, this);
+		}
+		if(firstName.equals("") || lastName.equals("") || email.equals("")) {
+		label_1.setText("Please Enter Your Collect Information!");
+		}
+		
+	}
 }
