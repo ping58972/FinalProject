@@ -76,6 +76,7 @@ public class ResultView extends VBox {
 	    	String filenamePath = pdfResult.getFilePath();
 	    	String subject = "Sending Veteran Email  example with PDF Attachment";
 	    	String body = "Hi, " + MainGUI.firstName +" "+ MainGUI.lastName+"\n This is Sending Veteran Email  example with PDF Attachment for testing. \nThanks.\nBy Century College Veteran Services.\n";
+	    	//sending email when clicked the email button.
 	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);	
 	    	//exit when click sending email button.
 	    	System.exit(0);
