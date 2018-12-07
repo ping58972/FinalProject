@@ -37,6 +37,37 @@ public class VeteranEmail {
     private String password; // correct password for Gmail id
     private String toEmail; // any destination email id
     
-
+    /*public VeteranEmail(String sourceEmail, String password, 
+	 * 	String toEmail, String filenamePath, String subject, String body)
+	 * @Descriptions 
+	 * 		to construct and set user name by user information. 
+	 * @Parameter: 
+	 * 		sourceEmail - String.
+	 * 		password - String.
+	 * 		toEmail - String.
+	 * 		filenamePath - String.
+	 * 		subject - String.
+	 * 		body - String.
+	 * @Precondition : all String not null.
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 	: null exception.
+	 * */
+    public VeteranEmail(String sourceEmail, String password, String toEmail, 
+    		String filenamePath, String subject, String body) {
+    	this.filenamePath = filenamePath;
+    	this.password = password;
+    	this.sourceEmail = sourceEmail;
+    	this.toEmail = toEmail;
+    	try {
+			setEmail(subject, body);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
 }
