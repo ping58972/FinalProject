@@ -69,5 +69,31 @@ public class VeteranEmail {
 			e.printStackTrace();
 		}
     }
-
+    
+    /*public  void setEmail(String subject, String body)
+	 * @Descriptions 
+	 * 		to setup email. 
+	 * @Parameter: 
+	 * 		subject - String.
+	 * 		body - String.
+	 * @Precondition : all String not null.
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 	: AddressException and MessagingException exception.
+	 * */
+    public  void setEmail(String subject, String body) 
+    		throws AddressException, MessagingException {
+    	//setup Properties.
+    	Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        Authenticator authentication = new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(sourceEmail, password);
+            }
+        };
+        generateEmailAndAttachment(Session.getInstance(props, authentication),toEmail, subject, body); 
+    }
 }
