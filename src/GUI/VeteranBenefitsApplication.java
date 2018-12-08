@@ -16,6 +16,7 @@ public class VeteranBenefitsApplication extends Application {
 	Scene resultScene;
 	ResultView resultView;
 	
+	
 	public static void launch(String[] args, JFrame frame) {
 		frame.setVisible(false);
 		Application.launch(args);
