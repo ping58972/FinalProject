@@ -3,11 +3,14 @@ package GUI;
 import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
+import edu.century.finalproject.VeteranEmail;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -29,7 +32,7 @@ public class ResultView extends VBox {
 	
 	private ResponseList responses;
 	
-	
+	private CreatePDF pdfResult;
 	
 	public ResultView(ResponseList responses, Button retakeBtn) {
 		this.setPrefHeight(600);
@@ -40,43 +43,72 @@ public class ResultView extends VBox {
 		responseArea = new TextFlow();
 		
 		this.retakeBtn = retakeBtn;
-		setDisplay();
 		populate();
+		setDisplay();
+		
 	}
 	
 	private void setDisplay() {
+		this.setStyle("-fx-background-color: " + UtilityColors.centuryBlue() +";" +
+				"-fx-padding: 30,30,30,30");
+		
+		ScrollPane scrollArea = new ScrollPane();
 		Pane responsePane = new Pane();
 		HBox btnBox = new HBox();
 		
 		responsePane.setPrefWidth(this.getPrefWidth());
 		responsePane.setPrefHeight(this.getPrefHeight() * (2.0/3));
-		responsePane.setStyle("-fx-border-color: black");
+		responsePane.setStyle("-fx-background-color: white;");
 		responsePane.getChildren().add(responseArea);
 		
+		scrollArea.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		scrollArea.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		scrollArea.setContent(responsePane);
 		
-		this.getChildren().add(responsePane);
+		this.getChildren().add(scrollArea);
+		 
 		
-		pdfBtn = UtilityGUI.createButton("Print PDF of Results");
+		pdfBtn = UtilityGUI.createButton("Generate PDF");
+		
+		//PDF SHOULD ONLY BE CREATED WHEN THE USERS CLICKS THE 'GENERATE PDF' BUTTON
+		//OTHERWISE WE NEED TO KEEP TRACK OF THE PDF FILE THROUGHOUT THE ENTIRE CLASS
 		pdfBtn.setOnAction(e ->{
-			CreatePDF pdfResult = new CreatePDF("John Smith");
-			pdfResult.add(responses);
+			createPDF();
 			pdfResult.openPDF();
 			
 		});
-		emailBtn = UtilityGUI.createButton("Email Century Veteran Service");
+		emailBtn = UtilityGUI.createButton("Send Email -> Exit ");
 		emailBtn.setTextAlignment(TextAlignment.CENTER);
 		emailBtn.setWrapText(true);
 		
+		//NEED VETERANEMAIL CLASS AND MAINGUI IMPELEMENTED - COMMENTED OUT SO CODE IS TESTABLE
+		emailBtn.setOnAction(e ->{
+			createPDF();
+			//Setup the information for sending email here.
+			String sourceEmail = "finalprojecttest2018century@gmail.com";
+	    	String password = "2018Century";
+	    	String toEmail = MainGUI.email;
+	    	String filenamePath = pdfResult.getFilePath();
+	    	String subject = "Sending Veteran Email  example with PDF Attachment";
+	    	String body = "Hi, " + MainGUI.firstName +" "+ MainGUI.lastName+"\n This is Sending Veteran Email  example with PDF Attachment for testing. \nThanks.\nBy Century College Veteran Services.\n";
+	    	//sending email when clicked the email button.
+	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);	
+	    	//exit when click sending email button.
+	    	System.exit(0);
+		});
 		
 		
 		btnBox.setPrefWidth(this.getPrefWidth());
 		btnBox.setPrefHeight(this.getPrefHeight() * (1.0/3));
-		btnBox.setStyle("-fx-border-color: black");
-		btnBox.setPadding(new Insets(0,0,0,0));
+		btnBox.setStyle("-fx-background-color: white;");
 		btnBox.setAlignment(Pos.CENTER_LEFT);
+		btnBox.setPadding(new Insets(0,25,0,25));
+		
 		
 		btnBox.getChildren().add(pdfBtn);
+		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
 		btnBox.getChildren().add(emailBtn);
+		btnBox.getChildren().add(UtilityGUI.createNullPane(160, 200));
 		btnBox.getChildren().add(retakeBtn);
 		
 		this.getChildren().add(btnBox);
@@ -105,6 +137,7 @@ public class ResultView extends VBox {
 		}
 		
 		responseArea.getChildren().addAll(new Text("You may qualify for the following benefit(s): " + cursor.getQuestion()));
+
 	}
 	
 	public void resetView() {
@@ -114,5 +147,11 @@ public class ResultView extends VBox {
 
 	public void setResponses(ResponseList responses) {
 		this.responses = responses;
+	}
+	
+	private void createPDF() {
+		pdfResult = new CreatePDF(MainGUI.firstName + " " + MainGUI.lastName, MainGUI.email);	//GENERIC INFORMATION UNTIL THE MAIN GUI IS IMPLEMENTED
+		pdfResult.add(responses);
+		
 	}
 }

@@ -59,10 +59,14 @@ public class QuestionView extends VBox{
 	 * @post The visual components are added to the QuestionView.
 	 */
 	private void setDisplay() {
+		this.setStyle("-fx-background-color: " + UtilityColors.centuryBlue() +";" +
+						"-fx-padding: 30,30,30,30");
+		
 		StackPane questionPane = new StackPane();
 		HBox btnBox = new HBox();
 		
 		questionLabel = UtilityGUI.createQuestionLabel();
+		
 		
 		yesBtn = UtilityGUI.createButton("YES");
 		yesBtn.setOnAction(e -> responseClicked(this.yesBtn));
@@ -70,13 +74,18 @@ public class QuestionView extends VBox{
 		noBtn = UtilityGUI.createButton("NO");
 		noBtn.setOnAction(e -> responseClicked(this.noBtn));
 		
-		questionPane.setStyle("-fx-border-color: black");
+		questionPane.setStyle("-fx-background-color: white;");
+//		questionPane.setStyle("-fx-border-color: " + UtilityColors.centuryBlue() + ";" +
+//								"-fx-border-width: 5 5 0 5;" +
+//								"-fx-background-color: white;");
 		questionPane.setPrefWidth(800);
 		questionPane.setPrefHeight(400);
 		questionPane.getChildren().add(questionLabel);
 		questionPane.setAlignment(Pos.CENTER);
 		
-		btnBox.setStyle("-fx-border-color: black");
+		btnBox.setStyle("-fx-background-insets: 0, 20, 20, 20;" + 
+						"-fx-background-color: white;");
+		btnBox.setPrefWidth(800);
 		btnBox.setPrefHeight(200);
 		btnBox.setPadding(new Insets(25,0,25,0));
 		
@@ -140,6 +149,7 @@ public class QuestionView extends VBox{
 	}
 	
 	public void resetView() {
+		
 		ResponseList temp = new ResponseList();
 		responseList = temp;
 		

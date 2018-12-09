@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -22,6 +23,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
+
 
 public class CreatePDF {
 	
@@ -45,10 +47,10 @@ public class CreatePDF {
 	 * @Return
 	 * @Thorws 	: null exception.
 	 * */
-	public CreatePDF(String userName) {
+	public CreatePDF(String userName, String email) {
 	setFilePath(userName+"_"+DEST);
 	this.userName = userName;
-	initPdf(filePath, userName);
+	initPdf(filePath, userName, email);
 	}
 	
 	/*public CreatePDF(String filePath, String userName)
@@ -62,10 +64,10 @@ public class CreatePDF {
 	 * @Return
 	 * @Thorws 	: null exception.
 	 * */
-	public CreatePDF(String filePath, String userName, ResponseList responses) {
+	public CreatePDF(String filePath, String userName, String email) {
 		setFilePath(filePath);
 		this.userName = userName;
-		initPdf(filePath, userName);
+		initPdf(filePath, userName, email);
 	}
 	
 	/* public void setFilePath(String dest)
@@ -80,7 +82,9 @@ public class CreatePDF {
 	public void setFilePath(String dest) {
 		this.filePath = dest;
 	}
-	
+	public String getFilePath() {
+		return this.filePath;
+	}
 	/* public void initPdf(String dest, String userName)
 	 * @Descriptions 
 	 * 		to initiate PDF document to create a pdf file. 
@@ -92,7 +96,7 @@ public class CreatePDF {
 	 * @Return 
 	 * @Thorws 	: FileNotFoundException
 	 * */
-	public void initPdf(String dest, String userName){
+	public void initPdf(String dest, String userName, String email){
 		//Initialize PDF writer
         try {
 			writer = new PdfWriter(dest);
@@ -104,10 +108,15 @@ public class CreatePDF {
         pdf = new PdfDocument(writer);
         // Initialize document
         document = new Document(pdf);
-        document.add(new Paragraph("USER NAME:" + userName));
+        document.add(new Paragraph("USER NAME:	" + userName));
+        document.add(new Paragraph("Email:\t\t\t\t" + email +"\n"));
+        document.add(new Paragraph("Created Date:\t" + new Date().toString() +"\n\n"));
         count = 0;
         table = new Table(3);
-        
+        table.setWidth(UnitValue.createPercentValue(100));
+        table.addCell(new Cell().add(new Paragraph(" ORDER ")));    
+        table.addCell(new Cell().add(new Paragraph(" QUESTIONS ")));
+        table.addCell(new Cell().add(new Paragraph(" ANSWERS ")));
 	}
 	
 	/* public void add(ResponseList responses)
@@ -125,13 +134,13 @@ public class CreatePDF {
 		ResponseNode cursor = responses.getHead();
 		
 		for(cursor = responses.getHead(); cursor.getLink() != null; cursor = cursor.getLink()) {
-		    table.setWidth(UnitValue.createPercentValue(100));
+		
 		    table.addCell(new Cell().add(new Paragraph(String.valueOf(++count))));
-		    table.addCell(new Cell().add(new Paragraph(cursor.getQuestion())));
+		    table.addCell(new Cell().add(new Paragraph(cursor.getQuestion()+" ")));
 		    table.addCell(new Cell().add(new Paragraph(cursor.getAnswer()))); 
 		}
 		
-		close(this.userName + ", you may qualify for the following benefit(s): " + cursor.getQuestion());
+		close("\n\t"+this.userName + ", you may qualify for the following benefit(s): " + cursor.getQuestion() +".");
 	}
 	
 	/* public void close(String lastAnswer)
@@ -163,7 +172,7 @@ public class CreatePDF {
 	public void openPDF() {
 		   if (Desktop.isDesktopSupported()) {
 			   File file = new File(filePath);
-		      //  file.getParentFile().mkdirs();
+		     
 	        	try {
 					Desktop.getDesktop().open(file);
 				} catch (IOException e) {

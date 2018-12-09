@@ -17,8 +17,11 @@ public class UtilityGUI {
 	 */
 	public static Label createQuestionLabel() {
 		Label questionLabel = new Label();
-		questionLabel.setPadding(new Insets(10,10,10,10));
-		questionLabel.setFont(Font.font("Arial", 24));
+		questionLabel.setStyle("-fx-font-family: Arial;" + 
+								"-fx-font-size: 24;" +
+								"-fx-font-weight: bold;" +
+								"-fx-text-fill: black");
+		//questionLabel.setPadding(new Insets(10,10,10,10));
 		questionLabel.setTextAlignment(TextAlignment.CENTER);
 		questionLabel.setWrapText(true);
 		return questionLabel;
@@ -31,6 +34,18 @@ public class UtilityGUI {
 	 */
 	public static Button createButton(String text) {
 		Button newBtn = new Button(text);
+		newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+						"-fx-font-weight: bold;" +
+						"-fx-text-fill: white;"  +
+						"-fx-background-radius: 10;");
+		newBtn.setOnMouseEntered(e -> newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+				"-fx-font-weight: bold;" +
+				"-fx-text-fill: black;"  +
+				"-fx-background-radius: 10;"));
+		newBtn.setOnMouseExited(e -> newBtn.setStyle("-fx-background-color: " + UtilityColors.centuryOrange() + ";" +
+				"-fx-font-weight: bold;" +
+				"-fx-text-fill: white;"  +
+				"-fx-background-radius: 10;"));
 		newBtn.setPrefHeight(100);
 		newBtn.setPrefWidth(160);
 		
