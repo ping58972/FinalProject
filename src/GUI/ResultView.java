@@ -74,6 +74,7 @@ public class ResultView extends VBox {
 		//OTHERWISE WE NEED TO KEEP TRACK OF THE PDF FILE THROUGHOUT THE ENTIRE CLASS
 		pdfBtn.setOnAction(e ->{
 			createPDF();
+			pdfResult.openPDF();
 			
 		});
 		emailBtn = UtilityGUI.createButton("Send Email -> Exit ");
@@ -149,8 +150,8 @@ public class ResultView extends VBox {
 	}
 	
 	private void createPDF() {
-		CreatePDF pdfResult = new CreatePDF(MainGUI.firstName + " " + MainGUI.lastName, MainGUI.email);	//GENERIC INFORMATION UNTIL THE MAIN GUI IS IMPLEMENTED
+		pdfResult = new CreatePDF(MainGUI.firstName + " " + MainGUI.lastName, MainGUI.email);	//GENERIC INFORMATION UNTIL THE MAIN GUI IS IMPLEMENTED
 		pdfResult.add(responses);
-		pdfResult.openPDF();
+		
 	}
 }

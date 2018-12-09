@@ -192,12 +192,12 @@ public class MainGUI extends JFrame implements ActionListener{
 		firstName = firstName_Field.getText();
 		lastName = lastName_Field.getText();
 		email = email_Field.getText();
-		if(!firstName.equals("") && !lastName.equals("") && !email.equals("")) {
+		if(!firstName.equals("") && !lastName.equals("") && !email.equals("")&& !email.equals("example@email.com")) {
 			
 		VeteranBenefitsApplication.launch(arg, this);
 		}
-		if(firstName.equals("") || lastName.equals("") || email.equals("")) {
-		label_1.setText("Please Enter Your Collect Information!");
+		if(firstName.equals("") || lastName.equals("") || email.equals("") || email.equals("example@email.com")) {
+		label_1.setText("Please Enter Your Collect Information and Email!");
 		}
 		
 	}
