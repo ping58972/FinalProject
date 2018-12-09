@@ -1,6 +1,5 @@
 package emailing;
 
-import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -13,31 +12,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailUtil {
+	
+	private final static String PASSWORD = "qvPK4nUmFc2W";
+	private final static String FROM_EMAIL = "smtpjavatest@gmail.com";
+	
 
-	public static void sendEmail(Session session, String toEmail, String subject, String body) {
-		try {
-			MimeMessage msg = new MimeMessage(session);
-			msg.addHeader("Content-type","text/HTML; charset=utf-8");
-			msg.addHeader("format", "flowed");
-			msg.addHeader("Content-Transfer-Encoding", "8bit");
-
-			msg.setFrom(new InternetAddress("no_reply@examle.com","NoReply-JD"));
-
-			msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
-
-			msg.setSubject(subject, "UTF-8");
-			msg.setText(body, "Utf-8");
-			msg.setSentDate(new Date());
-
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail,false));
-			System.out.println("Message is ready");
-			Transport.send(msg);
-
-			System.out.println("Message is sent");
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+	public static void sendEmail(String targetEmail, String subject, String bodyText) {
+		sendTLSEmail(FROM_EMAIL, PASSWORD, targetEmail, subject, bodyText);
 	}
 
 	public static void sendTLSEmail(String fromEmail, String password, String toEmail,
@@ -71,11 +52,9 @@ public class EmailUtil {
 	}
 
 	public static void main(String[]args) {
-		final String password = "qvPK4nUmFc2W";
-		final String fromEmail = "smtpjavatest@gmial.com";
-		final String toEmail = "will.schuss@gmail.com";
+		
 
-		sendTLSEmail(fromEmail, password, toEmail, "Test", "this is a Test");
+		sendEmail("will.schuss@gmail.com","Testing for final Project", "This is only a test");
 
 
 	}
