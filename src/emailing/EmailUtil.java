@@ -23,6 +23,9 @@ public class EmailUtil {
 	
 	private final static String PASSWORD = "qvPK4nUmFc2W";
 	private final static String FROM_EMAIL = "smtpjavatest@gmail.com";
+	
+	
+	
 
 	public static void sendEmail(Session session, String toEmail, String subject, String bodyText) {
 	
@@ -49,7 +52,7 @@ public class EmailUtil {
 	 * @return
 	 * 	a session that can send email's
 	 */
-	public static Session getNoReturnSession() {
+	public static Session getTLSSession() {
 		Properties props = System.getProperties();
 		props.put("mail.smtp.auth", true);
 		props.put("mail.smtp.starttls.enable", "true");
@@ -71,9 +74,9 @@ public class EmailUtil {
 	 * @desc
 	 * 	sends an email to the targetEmail address with an attachment
 	 * @param session
-	 * 	the session object recommend using getNoReturnSession()
+	 * 	the session object recommend using getTLSSession()
 	 * @param targetEmail
-	 * 	the email address of the person you want to send a message to
+	 * 	the email address of the person you want to send a message to 
 	 * @param subject
 	 * 	the subject line of the email
 	 * @param body
@@ -116,7 +119,7 @@ public class EmailUtil {
 	public static void main(String[]args) {
 		
 
-		sendEmail(getNoReturnSession(),"will.schuss@gmail.com","Testing for final Project", "This is only a test");
+		sendAttachment(getTLSSession(), "will.schuss@gmail.com", "TestAttachment", "Testing", "D:/git/FinalProject/Will Smith_Response.pdf");
 
 
 	}
