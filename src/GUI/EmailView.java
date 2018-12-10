@@ -1,7 +1,8 @@
 
 package GUI;
 
-import emailing.EmailUtil;
+import edu.century.finalproject.CreatePDF;
+import edu.century.finalproject.VeteranEmail;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -56,8 +57,16 @@ public class EmailView extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		sendEmailBtn.setOnAction(e ->{
-			EmailUtil.sendAttachment(EmailUtil.getTLSSession(), "smtpJavaTest@gmail.com", "Vet Benifit App Email", 
-					bodyTxtArea.getText(), System.getProperty("user.home") + "/Downloads/VET_Benift.pdf");
+
+			//Setup the information for sending email here.
+			String sourceEmail = "finalprojecttest2018century@gmail.com";
+	    	String password = "2018Century";
+	    	String toEmail = MainGUI.email;
+	    	String filenamePath = CreatePDF.getFilePath();//CreatePDF.getFilePath(); 
+	    	String subject = "Sending Veteran Email  example with PDF Attachment";
+	    	String body = "Hi, " + MainGUI.firstName +" "+ MainGUI.lastName+bodyTxtArea.getText()+"\nBy Century College Veteran Services.\n";
+	    	//sending email when clicked the email button.
+	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);
 			primaryStage.close();
 		});
 		primaryStage.setScene(new Scene(root));

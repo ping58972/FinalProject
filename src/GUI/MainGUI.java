@@ -1,4 +1,13 @@
 package GUI;
+/**public class MainGUI from the package GUI
+*
+*  Century College, CSCI 2082 Fall 2018.
+*  VeteranEmail.java, Programming Final Project.
+*
+*  @author (Ping) Nalongsone Danddank, Sean and Will
+*  @version 1.0
+*  @since 12/06/2018
+* */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,20 +27,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 public class MainGUI extends JFrame implements ActionListener{
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**public class MainGUI from the package GUI
-	 *
-	 *  Century College, CSCI 2082 Fall 2018.
-	 *  VeteranEmail.java, Programming Final Project.
-	 *
-	 *  @author (Ping) Nalongsone Danddank, Sean and Will
-	 *  @version 1.0
-	 *  @since 12/06/2018
-	 * */
+
 	private JPanel contentPane;
 	private JTextField firstName_Field;
 	private JTextField lastName_Field;

@@ -27,8 +27,8 @@ import com.itextpdf.layout.property.UnitValue;
 
 public class CreatePDF {
 
-	private static final String DEST = System.getProperty("user.home") + "/Downloads/VET_Benift.pdf";
-	private String filePath;
+	private static final String DEST = "Response.pdf";
+	private static String  filePath;
 	private String userName;
 	private PdfWriter writer;
 	private PdfDocument pdf;
@@ -48,7 +48,7 @@ public class CreatePDF {
 	 * @Thorws 	: null exception.
 	 * */
 	public CreatePDF(String userName, String email) {
-	setFilePath(DEST);
+	setFilePath(userName+" "+DEST);
 	this.userName = userName;
 	initPdf(filePath, userName, email);
 	}
@@ -82,8 +82,8 @@ public class CreatePDF {
 	public void setFilePath(String dest) {
 		this.filePath = dest;
 	}
-	public String getFilePath() {
-		return this.filePath;
+	public static String getFilePath() {
+		return filePath;
 	}
 	/* public void initPdf(String dest, String userName)
 	 * @Descriptions
