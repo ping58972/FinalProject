@@ -3,7 +3,7 @@ package GUI;
 import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
-import edu.century.finalproject.VeteranEmail;
+import emailing.EmailUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -86,7 +86,7 @@ public class ResultView extends VBox {
 		//NEED VETERANEMAIL CLASS AND MAINGUI IMPELEMENTED - COMMENTED OUT SO CODE IS TESTABLE
 		emailBtn.setOnAction(e ->{
 			createPDF();
-			//Setup the information for sending email here.
+			EmailUtil.sendAttachment(EmailUtil.getTLSSession(), "smtpJavaTest@gmail.com", "vet benifits Email", /*add body text object here*/"Testing", System.getProperty("user.home")+ "/Downloads/VET_Benift.pdf");
 
 
 
