@@ -3,7 +3,6 @@ package GUI;
 import edu.century.finalproject.CreatePDF;
 import edu.century.finalproject.ResponseList;
 import edu.century.finalproject.ResponseNode;
-import emailing.EmailUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,6 +17,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 public class ResultView extends VBox {
 
@@ -86,6 +86,18 @@ public class ResultView extends VBox {
 		//NEED VETERANEMAIL CLASS AND MAINGUI IMPELEMENTED - COMMENTED OUT SO CODE IS TESTABLE
 		emailBtn.setOnAction(e ->{
 			createPDF();
+			EmailView emailPopUp = new EmailView();
+			try {
+				emailPopUp.start(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+
+			//Setup the information for sending email here.
+
+
 
 		});
 
