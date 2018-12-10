@@ -50,6 +50,7 @@ public class MainGUI extends JFrame implements ActionListener{
 				try {
 
 					MainGUI frame = new MainGUI();
+					frame.setVisible(true);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -184,7 +185,6 @@ public class MainGUI extends JFrame implements ActionListener{
 		button.addActionListener(this);
 		contentPane.add(button);
 		setContentPane(contentPane);
-		setVisible(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
