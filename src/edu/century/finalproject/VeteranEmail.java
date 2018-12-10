@@ -1,9 +1,9 @@
 package edu.century.finalproject;
 /**public class VeteranEmail from the package edu.century.finalproject
- * 
+ *
  *  Century College, CSCI 2082 Fall 2018.
  *  VeteranEmail.java, Programming Final Project.
- *  
+ *
  *  @author (Ping) Nalongsone Danddank
  *  @version 1.0
  *  @since 12/07/2018
@@ -12,9 +12,8 @@ package edu.century.finalproject;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
- 
+
 import javax.activation.DataHandler;
-import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
@@ -36,12 +35,12 @@ public class VeteranEmail {
     private  String sourceEmail;// requires valid Gmail id.
     private String password; // correct password for Gmail id
     private String toEmail; // any destination email id.
-    
-    /*public VeteranEmail(String sourceEmail, String password, 
+
+    /*public VeteranEmail(String sourceEmail, String password,
 	 * 	String toEmail, String filenamePath, String subject, String body)
-	 * @Descriptions 
-	 * 		to construct and set user name by user information. 
-	 * @Parameter: 
+	 * @Descriptions
+	 * 		to construct and set user name by user information.
+	 * @Parameter:
 	 * 		sourceEmail - String.
 	 * 		password - String.
 	 * 		toEmail - String.
@@ -53,7 +52,7 @@ public class VeteranEmail {
 	 * @Return
 	 * @Thorws 	: null exception.
 	 * */
-    public VeteranEmail(String sourceEmail, String password, String toEmail, 
+    public VeteranEmail(String sourceEmail, String password, String toEmail,
     		String filenamePath, String subject, String body) {
     	this.filenamePath = filenamePath;
     	this.password = password;
@@ -69,11 +68,11 @@ public class VeteranEmail {
 			e.printStackTrace();
 		}
     }
-    
+
     /*public  void setEmail(String subject, String body)
-	 * @Descriptions 
-	 * 		to setup email. 
-	 * @Parameter: 
+	 * @Descriptions
+	 * 		to setup email.
+	 * @Parameter:
 	 * 		subject - String.
 	 * 		body - String.
 	 * @Precondition : all String not null.
@@ -81,7 +80,7 @@ public class VeteranEmail {
 	 * @Return
 	 * @Thorws 	: AddressException and MessagingException exception.
 	 * */
-    public  void setEmail(String subject, String body) 
+    public  void setEmail(String subject, String body)
     		throws AddressException, MessagingException {
     	//setup Properties.
     	Properties props = new Properties();
@@ -94,14 +93,14 @@ public class VeteranEmail {
                 return new PasswordAuthentication(sourceEmail, password);
             }
         };
-        generateEmailAndAttachment(Session.getInstance(props, authentication),toEmail, subject, body); 
+        generateEmailAndAttachment(Session.getInstance(props, authentication),toEmail, subject, body);
     }
-    
-    /*public void generateEmailAndAttachment(Session session, 
+
+    /*public void generateEmailAndAttachment(Session session,
 	 * String toEmail, String subject, String body)
-	 * @Descriptions 
+	 * @Descriptions
 	 * 		to generate Email And Attachment.
-	 * @Parameter: 
+	 * @Parameter:
 	 * 		session - Session.
 	 * 		toEmail - String.
 	 * 		subject - String.
@@ -109,10 +108,10 @@ public class VeteranEmail {
 	 * @Precondition : all String not null.
 	 * @Postcondition
 	 * @Return
-	 * @Thorws 
+	 * @Thorws
 	 * */
-    public void generateEmailAndAttachment(Session session, String toEmail, String subject, String body) { 
-    	
+    public void generateEmailAndAttachment(Session session, String toEmail, String subject, String body) {
+
         try {
             MimeMessage crunchifyMessage = new MimeMessage(session);
             crunchifyMessage.setFrom(new InternetAddress(sourceEmail,
@@ -121,7 +120,7 @@ public class VeteranEmail {
             crunchifyMessage.setSubject(subject, "UTF-8");
             crunchifyMessage.setSentDate(new Date());
             crunchifyMessage.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(toEmail, false));           
+                    InternetAddress.parse(toEmail, false));
             // Create the message body part
             BodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setContent(body+"\nSent Data: " + new Date().toString(), "text/html");

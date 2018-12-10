@@ -1,9 +1,9 @@
 package edu.century.finalproject;
 /**public class CreatePDF from the package edu.century.finalproject
- * 
+ *
  *  Century College, CSCI 2082 Fall 2018.
  *  CreatePDF.java, Programming Final Project.
- *  
+ *
  *  @author (Ping) Nalongsone Danddank
  *  @version 1.0
  *  @since 11/16/2018
@@ -26,8 +26,8 @@ import com.itextpdf.layout.property.UnitValue;
 
 
 public class CreatePDF {
-	
-	private static final String DEST = "Response.pdf";
+
+	private static final String DEST = System.getProperty("user.home") + "/Downloads/VET_Benift.pdf";
 	private String filePath;
 	private String userName;
 	private PdfWriter writer;
@@ -35,12 +35,12 @@ public class CreatePDF {
 	private Document document;
 	private Table table;
 	private int count;
-	
-	
+
+
 	/*public CreatePDF(String userName)
-	 * @Descriptions 
-	 * 		to construct and set user name by defeat file path. 
-	 * @Parameter: 
+	 * @Descriptions
+	 * 		to construct and set user name by defeat file path.
+	 * @Parameter:
 	 * 		userName - String.
 	 * @Precondition : userName not null.
 	 * @Postcondition
@@ -48,15 +48,15 @@ public class CreatePDF {
 	 * @Thorws 	: null exception.
 	 * */
 	public CreatePDF(String userName, String email) {
-	setFilePath(userName+"_"+DEST);
+	setFilePath(DEST);
 	this.userName = userName;
 	initPdf(filePath, userName, email);
 	}
-	
+
 	/*public CreatePDF(String filePath, String userName)
-	 * @Descriptions 
-	 * 		to construct and set user name and file path. 
-	 * @Parameter: 
+	 * @Descriptions
+	 * 		to construct and set user name and file path.
+	 * @Parameter:
 	 * 		filePath - String.
 	 * 		userName - String.
 	 * @Precondition : userName and filePath not null.
@@ -69,15 +69,15 @@ public class CreatePDF {
 		this.userName = userName;
 		initPdf(filePath, userName, email);
 	}
-	
+
 	/* public void setFilePath(String dest)
-	 * @Descriptions 
-	 * 		to set dest to FilePath. 
+	 * @Descriptions
+	 * 		to set dest to FilePath.
 	 * @Parameter : dest - String
 	 * @Precondition : dest must not null.
 	 * @Postcondition
-	 * @Return 
-	 * @Thorws 	
+	 * @Return
+	 * @Thorws
 	 * */
 	public void setFilePath(String dest) {
 		this.filePath = dest;
@@ -86,14 +86,14 @@ public class CreatePDF {
 		return this.filePath;
 	}
 	/* public void initPdf(String dest, String userName)
-	 * @Descriptions 
-	 * 		to initiate PDF document to create a pdf file. 
-	 * @Parameter : 
+	 * @Descriptions
+	 * 		to initiate PDF document to create a pdf file.
+	 * @Parameter :
 	 * 		dest - String
 	 * 		userName - String
 	 * @Precondition : dest  and userName must not null.
 	 * @Postcondition
-	 * @Return 
+	 * @Return
 	 * @Thorws 	: FileNotFoundException
 	 * */
 	public void initPdf(String dest, String userName, String email){
@@ -114,43 +114,43 @@ public class CreatePDF {
         count = 0;
         table = new Table(3);
         table.setWidth(UnitValue.createPercentValue(100));
-        table.addCell(new Cell().add(new Paragraph(" ORDER ")));    
+        table.addCell(new Cell().add(new Paragraph(" ORDER ")));
         table.addCell(new Cell().add(new Paragraph(" QUESTIONS ")));
         table.addCell(new Cell().add(new Paragraph(" ANSWERS ")));
 	}
-	
+
 	/* public void add(ResponseList responses)
-	 * @Descriptions 
-	 * 		to add questions and answers to pdf file. 
-	 * @Parameter : 
+	 * @Descriptions
+	 * 		to add questions and answers to pdf file.
+	 * @Parameter :
 	 * 		responses - ResponseList
-	 * 		
+	 *
 	 * @Precondition : responses  and question must not null.
 	 * @Postcondition
-	 * @Return 
+	 * @Return
 	 * @Thorws 	: ResponseList null
 	 * */
-	public void add(ResponseList responses) {	
+	public void add(ResponseList responses) {
 		ResponseNode cursor = responses.getHead();
-		
+
 		for(cursor = responses.getHead(); cursor.getLink() != null; cursor = cursor.getLink()) {
-		
+
 		    table.addCell(new Cell().add(new Paragraph(String.valueOf(++count))));
 		    table.addCell(new Cell().add(new Paragraph(cursor.getQuestion()+" ")));
-		    table.addCell(new Cell().add(new Paragraph(cursor.getAnswer()))); 
+		    table.addCell(new Cell().add(new Paragraph(cursor.getAnswer())));
 		}
-		
+
 		close("\n\t"+this.userName + ", you may qualify for the following benefit(s): " + cursor.getQuestion() +".");
 	}
-	
+
 	/* public void close(String lastAnswer)
-	 * @Descriptions 
-	 * 		add the last question and close the processing. 
-	 * @Parameter : 
+	 * @Descriptions
+	 * 		add the last question and close the processing.
+	 * @Parameter :
 	 * 		lastAnswer - String
 	 * @Precondition : lastQ must not null.
 	 * @Postcondition
-	 * @Return 
+	 * @Return
 	 * @Thorws 	: IOException
 	 * */
 	public void close(String lastAnswer) {
@@ -159,20 +159,20 @@ public class CreatePDF {
 		//Close document
 		document.close();
 	}
-	
+
 	/* public void openPDF()
-	 * @Descriptions 
-	 * 		open the pdf file. 
-	 * @Parameter : 
+	 * @Descriptions
+	 * 		open the pdf file.
+	 * @Parameter :
 	 * @Precondition :
 	 * @Postcondition
-	 * @Return 
+	 * @Return
 	 * @Thorws 	: IOException
 	 * */
 	public void openPDF() {
 		   if (Desktop.isDesktopSupported()) {
 			   File file = new File(filePath);
-		     
+
 	        	try {
 					Desktop.getDesktop().open(file);
 				} catch (IOException e) {
