@@ -1,8 +1,0 @@
-H,Have you served on Active Duty for purposes other than training?,Q002,Q001
-Q001,Other flowchart,,
-Q002,Did you receive an honorable discharge?,Q003,Q004
-Q003,Did you serve for at least 90 days of aggregate Active Duty after Sept. 11 2001?,,Q005
-Q004,AD3 - Did you recieve a discharge that was other than honorable?,Q006,Q007
-Q005,Were you discharged with a service connected disability after 30 days of service?,,
-Q006,Do you meet MN residency definition?,,
-Q007,Benefit - NONE,,
