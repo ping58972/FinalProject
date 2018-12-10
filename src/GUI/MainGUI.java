@@ -135,7 +135,7 @@ public class MainGUI extends JFrame implements ActionListener{
 		button.setBounds(395, 363, 283, 36);
 	
 		
-		firstName_Field = new JTextField("John");
+		firstName_Field = new JTextField();
 		firstName_Field.setBounds(395, 83, 283, 36);
 		contentPane.add(firstName_Field);
 		firstName_Field.setColumns(10);
@@ -148,7 +148,7 @@ public class MainGUI extends JFrame implements ActionListener{
 		lblEmail.setBounds(395, 132, 150, 14);
 		contentPane.add(lblEmail);
 		
-		lastName_Field = new JTextField("Smith");
+		lastName_Field = new JTextField();
 		lastName_Field.setColumns(10);
 		lastName_Field.setBounds(395, 157, 283, 36);
 		contentPane.add(lastName_Field);

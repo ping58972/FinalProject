@@ -56,12 +56,14 @@ public class ResultView extends VBox {
 		Pane responsePane = new Pane();
 		HBox btnBox = new HBox();
 		
+		
 		responsePane.setPrefWidth(this.getPrefWidth());
 		responsePane.setPrefHeight(this.getPrefHeight() * (2.0/3));
 		responsePane.setStyle("-fx-background-color: white;");
 		responsePane.getChildren().add(responseArea);
 		
-		scrollArea.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		scrollArea.setPrefWidth(responsePane.getWidth());
+		scrollArea.setHbarPolicy(ScrollBarPolicy.NEVER);
 		scrollArea.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 		scrollArea.setContent(responsePane);
 		
@@ -94,7 +96,7 @@ public class ResultView extends VBox {
 	    	//sending email when clicked the email button.
 	    	VeteranEmail email = new VeteranEmail(sourceEmail,  password, toEmail, filenamePath, subject, body);	
 	    	//exit when click sending email button.
-	    	System.exit(0);
+	    	
 		});
 		
 		
