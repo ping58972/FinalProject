@@ -4,7 +4,7 @@ package GUI;
 *  Century College, CSCI 2082 Fall 2018.
 *  VeteranEmail.java, Programming Final Project.
 *
-*  @author (Ping) Nalongsone Danddank, Sean and Will
+*  @author (Ping) Nalongsone Danddank
 *  @version 1.0
 *  @since 12/06/2018
 * */
