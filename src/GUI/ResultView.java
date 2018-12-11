@@ -22,27 +22,19 @@ import javafx.stage.Stage;
 public class ResultView extends VBox {
 
 	private TextFlow responseArea;
-
 	private Button pdfBtn;
 	private Button emailBtn;
 	private Button retakeBtn;
-
 	private ResponseList responses;
-
 	private CreatePDF pdfResult;
-
 	public ResultView(ResponseList responses, Button retakeBtn) {
 		this.setPrefHeight(600);
 		this.setPrefWidth(800);
-
-
 		this.responses = responses;
 		responseArea = new TextFlow();
-
 		this.retakeBtn = retakeBtn;
 		populate();
 		setDisplay();
-
 	}
 
 	private void setDisplay() {
@@ -93,11 +85,6 @@ public class ResultView extends VBox {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-
-
-			//Setup the information for sending email here.
-
-
 
 		});
 
@@ -154,7 +141,7 @@ public class ResultView extends VBox {
 	}
 
 	private void createPDF() {
-		pdfResult = new CreatePDF(MainGUI.firstName + " " + MainGUI.lastName, MainGUI.email);	//GENERIC INFORMATION UNTIL THE MAIN GUI IS IMPLEMENTED
+		pdfResult = new CreatePDF(MainGUI.firstName + " " + MainGUI.lastName, MainGUI.email);	
 		pdfResult.add(responses);
 
 	}
