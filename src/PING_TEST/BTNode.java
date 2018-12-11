@@ -96,7 +96,7 @@ public class BTNode<T> {
 	public void setPosition(T position) {
 		this.position = position;
 	}
-	/* public String getData()
+	/* public T getData() {
 	 * @Descriptions 
 	 * 		to get data from node tree. 
 	 * @Parameter
@@ -108,7 +108,7 @@ public class BTNode<T> {
 	public T getData() {
 		return data;
 	}
-	/* public void setData(String data)
+	/* public void setData(T data)
 	 * @Descriptions 
 	 * 		to set data to node tree. 
 	 * @Parameter : data - String
@@ -120,7 +120,7 @@ public class BTNode<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
-	/* public BTNode getLeft()
+	/* public BTNode<T> getLeft()
 	 * @Descriptions 
 	 * 		to get left of BTNode from node tree. 
 	 * @Parameter
@@ -132,7 +132,7 @@ public class BTNode<T> {
 	public BTNode<T> getLeft() {
 		return left;
 	}
-	/* public void setLeft(BTNode left)
+	/* public void setLeft(BTNode<T> left)
 	 * @Descriptions 
 	 * 		to set left node to node tree. 
 	 * @Parameter : left - BTNode
@@ -144,7 +144,7 @@ public class BTNode<T> {
 	public void setLeft(BTNode<T> left) {
 		this.left = left;
 	}
-	/* public BTNode getRight() 
+	/* public BTNode<T> getRight()
 	 * @Descriptions 
 	 * 		to get right of BTNode from node tree. 
 	 * @Parameter
@@ -156,7 +156,7 @@ public class BTNode<T> {
 	public BTNode<T> getRight() {
 		return right;
 	}
-	/* public void setRight(BTNode right)
+	/* public void setRight(BTNode<T> right)
 	 * @Descriptions 
 	 * 		to set right node to node tree. 
 	 * @Parameter : right - BTNode
