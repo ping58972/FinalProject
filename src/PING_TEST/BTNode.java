@@ -10,7 +10,6 @@ package PING_TEST;
  * */
 import java.util.Scanner;
 
-
 public class BTNode<T> {
 	private T position;
 	private  T data;

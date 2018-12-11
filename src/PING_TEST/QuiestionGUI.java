@@ -25,7 +25,16 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	BTNode node;
 	JLabel lblNewLabel;
-
+	
+	/*public QuiestionGUI(BTNode data)
+	 * @Descriptions 
+	 * 		to construct QuiestionGUI class. 
+	 * @Parameter: 
+	 * @Precondition :
+	 * @Postcondition
+	 * @Return
+	 * @Thorws
+	 * */
 	public QuiestionGUI(BTNode data) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
