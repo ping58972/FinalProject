@@ -85,6 +85,7 @@ public class CreatePDF {
 	public static String getFilePath() {
 		return filePath;
 	}
+	
 	/* public void initPdf(String dest, String userName)
 	 * @Descriptions
 	 * 		to initiate PDF document to create a pdf file.
@@ -181,6 +182,16 @@ public class CreatePDF {
 				}
 	        }
 	}
+	
+	/* public void delectPDF()
+	 * @Descriptions
+	 * 		delect the pdf file.
+	 * @Parameter :
+	 * @Precondition :
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 	: IOException
+	 * */
 	public void delectPDF() {
 
 		try {
