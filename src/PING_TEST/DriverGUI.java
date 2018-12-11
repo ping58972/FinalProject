@@ -71,11 +71,11 @@ public class DriverGUI extends JFrame implements ActionListener {
 		btnStart.setEnabled(false);
 		setVisible(true);
 	}
-public static void main(String[] args) {
+/*public static void main(String[] args) {
 				
 	DriverGUI driver = new DriverGUI();
 	}
-
+*/
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
