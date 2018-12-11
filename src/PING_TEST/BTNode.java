@@ -19,7 +19,15 @@ public class BTNode<T> {
 		position = initPos;
 		data = initData;
 	}
-	
+	/*public BTNode()
+	 * @Descriptions 
+	 * 		to construct null class. 
+	 * @Parameter: 
+	 * @Precondition :
+	 * @Postcondition
+	 * @Return
+	 * @Thorws
+	 * */
 	public BTNode() {
 		data = null;
 		left = null;
@@ -41,13 +49,30 @@ public class BTNode<T> {
 		}
 		
 	}
+	/* public void printAll()
+	 * @Descriptions 
+	 * 		to print All nodes. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 	
+	 * */
 	public void printAll() {
 		System.out.println(data.toString());
 		if(left != null) left.printAll();
 		if(right != null) right.printAll();
 		
 	}
-
+	/* public void printYN()
+	 * @Descriptions 
+	 * 		to print nodes follow yes and no answer. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return
+	 * @Thorws 	
+	 * */
 	public void printYN() {
 		Character yn = 'q';
 		System.out.println(data.toString());
@@ -71,32 +96,76 @@ public class BTNode<T> {
 	public void setPosition(T position) {
 		this.position = position;
 	}
-
+	/* public String getData()
+	 * @Descriptions 
+	 * 		to get data from node tree. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return : data of  node.
+	 * @Thorws 	: null if node is null.
+	 * */
 	public T getData() {
 		return data;
 	}
-
+	/* public void setData(String data)
+	 * @Descriptions 
+	 * 		to set data to node tree. 
+	 * @Parameter : data - String
+	 * @Precondition : data must not null.
+	 * @Postcondition
+	 * @Return 
+	 * @Thorws 	
+	 * */
 	public void setData(T data) {
 		this.data = data;
 	}
-
+	/* public BTNode getLeft()
+	 * @Descriptions 
+	 * 		to get left of BTNode from node tree. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return : left of  node tree.
+	 * @Thorws 	: null if node is null.
+	 * */
 	public BTNode<T> getLeft() {
 		return left;
 	}
-
+	/* public void setLeft(BTNode left)
+	 * @Descriptions 
+	 * 		to set left node to node tree. 
+	 * @Parameter : left - BTNode
+	 * @Precondition : left must be BTNode class.
+	 * @Postcondition
+	 * @Return 
+	 * @Thorws 	
+	 * */
 	public void setLeft(BTNode<T> left) {
 		this.left = left;
 	}
-
+	/* public BTNode getRight() 
+	 * @Descriptions 
+	 * 		to get right of BTNode from node tree. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return : right of  node tree.
+	 * @Thorws 	: null if node is null.
+	 * */
 	public BTNode<T> getRight() {
 		return right;
 	}
-
+	/* public void setRight(BTNode right)
+	 * @Descriptions 
+	 * 		to set right node to node tree. 
+	 * @Parameter : right - BTNode
+	 * @Precondition : right must be BTNode class.
+	 * @Postcondition
+	 * @Return 
+	 * @Thorws 	
+	 * */
 	public void setRight(BTNode<T> right) {
 		this.right = right;
 	}
-			
-	
-		
-
 }
