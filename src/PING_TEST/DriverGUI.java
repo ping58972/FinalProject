@@ -30,7 +30,6 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
-
 public class DriverGUI extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -71,15 +70,16 @@ public class DriverGUI extends JFrame implements ActionListener {
 		btnStart.setEnabled(false);
 		setVisible(true);
 	}
+	
 /*public static void main(String[] args) {
 				
 	DriverGUI driver = new DriverGUI();
 	}
 */
+	
 @Override
 public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
-	//btnNewButton.setEnabled(true);
+
 	String command = e.getActionCommand();
 	if(command.equals("Browse")) {
 	 				
@@ -91,7 +91,7 @@ public void actionPerformed(ActionEvent e) {
 		//btnNewButton.setEnabled(false);
 		btnStart.setEnabled(true);
 	}else {
-		//lblNewLabel.setText("");
+		
 		lblNewLabel.setText("Please...Choosing a correct path and file!");
 		btnStart.setEnabled(false);
 	}
@@ -100,8 +100,6 @@ public void actionPerformed(ActionEvent e) {
 		lblNewLabel.setText("Please...Click the Browse button!");
 		readCSV();
 	}
-	
-	
 }
 
 public void readCSV() {
@@ -128,7 +126,7 @@ public void readCSV() {
 	}
 
 	veteran = new BTNode(arr2D.get(0)[0], arr2D.get(0)[1]);
-	//System.out.println(arr2D.get(0)[0]);
+
 	for(String[] rows : arr2D) {
 		if(rows[2]!=null && rows[3] != null) {
 		String leftData = "";
@@ -140,12 +138,11 @@ public void readCSV() {
 			if(rows[3].equals(rowf[0])){
 				rightData = rowf[1];
 			}
-		}
-		
+		}		
 		veteran.insert(rows[0], rows[2], leftData, rows[3], rightData);
 		}
 	}
-	//veteran.printAll();
+			//veteran.printAll();
 			//veteran.printYN();
 			QuiestionGUI frame = new QuiestionGUI(veteran);
 			if(veteran.getData()==null) {
