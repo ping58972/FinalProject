@@ -12,7 +12,6 @@ package edu.century.finalproject;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
-
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
@@ -30,7 +29,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class VeteranEmail {
-
     private String filenamePath; //set attachment file path.
     private  String sourceEmail;// requires valid Gmail id.
     private String password; // correct password for Gmail id
