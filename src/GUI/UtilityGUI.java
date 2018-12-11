@@ -1,23 +1,21 @@
 package GUI;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 
 public class UtilityGUI {
 
-	
+
 	/**
 	 * Creates and formats a label to display questions.
 	 * @return a label object.
 	 */
 	public static Label createQuestionLabel() {
 		Label questionLabel = new Label();
-		questionLabel.setStyle("-fx-font-family: Arial;" + 
+		questionLabel.setStyle("-fx-font-family: Arial;" +
 								"-fx-font-size: 24;" +
 								"-fx-font-weight: bold;" +
 								"-fx-text-fill: black");
@@ -26,7 +24,7 @@ public class UtilityGUI {
 		questionLabel.setWrapText(true);
 		return questionLabel;
 	}
-	
+
 	/**
 	 * Creates and formats a button for the user to answer questions.
 	 * @param text the text to display in the button.
@@ -48,10 +46,10 @@ public class UtilityGUI {
 				"-fx-background-radius: 10;"));
 		newBtn.setPrefHeight(100);
 		newBtn.setPrefWidth(160);
-		
+
 		return newBtn;
 	}
-	
+
 	/**
 	 * Creates a null pane that can be used to add blank space on the GUI between nodes.
 	 * @param width the width of the null pane.
@@ -62,7 +60,7 @@ public class UtilityGUI {
 		Pane nullPane = new Pane();
 		nullPane.setPrefHeight(height);
 		nullPane.setPrefWidth(width);
-		
+
 		return nullPane;
 	}
 }

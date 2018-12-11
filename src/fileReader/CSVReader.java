@@ -1,11 +1,8 @@
 package fileReader;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import edu.century.finalproject.BTNode;
@@ -29,11 +26,6 @@ public class CSVReader {
 		BTNode output = createTree(csvArray);
 		return output;
 
-	}
-
-	public static void writeFile(BTNode head) {
-
-		BTNode[] arrayForm = convertToArray(head);
 	}
 
 	/**

@@ -5,15 +5,15 @@ public class ResponseList {
 	private ResponseNode head;
 	private ResponseNode tail;
 	private int nodeCount;
-	
-	
+
+
 	public ResponseList() {
 		this.head = null;
-		this.tail = tail;
+		this.tail = null;
 		nodeCount = 0;
 	}
-	
-	
+
+
 	public void add(ResponseNode element) {
 		if(head == null) {
 			head = element;
@@ -23,13 +23,13 @@ public class ResponseList {
 			tail = element;
 		}
 		nodeCount++;
-		
+
 	}
-	
+
 	public ResponseNode getHead() {
 		return this.head;
 	}
-	
+
 	public int size() {
 		return nodeCount;
 	}
