@@ -43,20 +43,15 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		if (data !=null) {
-			lblNewLabel = new JLabel(data.getData().toString());
-			
+			lblNewLabel = new JLabel(data.getData().toString());		
 		}else
-			lblNewLabel = new JLabel("No more Quiestion!");
-		
-		contentPane.add(lblNewLabel, BorderLayout.CENTER);
-		
+			lblNewLabel = new JLabel("No more Quiestion!");	
+		contentPane.add(lblNewLabel, BorderLayout.CENTER);	
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.SOUTH);
-		
+		contentPane.add(panel, BorderLayout.SOUTH);		
 		JButton btnNewButton = new JButton("YES");
 		btnNewButton.addActionListener(this);
-		panel.add(btnNewButton);
-		
+		panel.add(btnNewButton);		
 		JButton btnNo = new JButton("NO");
 		btnNo.addActionListener(this);
 		panel.add(btnNo);
