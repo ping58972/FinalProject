@@ -21,17 +21,11 @@ import javax.swing.JButton;
 
 public class QuiestionGUI extends JFrame implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	BTNode node;
 	JLabel lblNewLabel;
-	/**
-	 * Create the frame.
-	 * @param <T>
-	 */
+
 	public QuiestionGUI(BTNode data) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
