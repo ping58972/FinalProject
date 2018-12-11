@@ -65,12 +65,10 @@ public class QuiestionGUI extends JFrame implements ActionListener {
 		String command = e.getActionCommand();
 		setVisible(false);
 		
-		if(command.equals("YES")) {
-			
+		if(command.equals("YES")) {		
 			new QuiestionGUI(node.getLeft());
 		}
-		if(command.equals("NO")) {
-			
+		if(command.equals("NO")) {			
 			new QuiestionGUI(node.getRight());
 		}
 		

@@ -18,6 +18,7 @@ public class BTNode<T> {
 		position = initPos;
 		data = initData;
 	}
+	
 	/*public BTNode()
 	 * @Descriptions 
 	 * 		to construct null class. 
@@ -32,6 +33,17 @@ public class BTNode<T> {
 		left = null;
 		right = null;
 	}
+	
+	/*public void insert(T headPos, T leftPos,
+			T leftData, T rightPos, T rightData)
+	 * @Descriptions 
+	 * 		to insert. 
+	 * @Parameter: 
+	 * @Precondition :
+	 * @Postcondition
+	 * @Return
+	 * @Thorws
+	 * */
 	public void insert(T headPos, T leftPos,
 			T leftData, T rightPos, T rightData){
 		if(position.equals(headPos)) {
@@ -87,11 +99,27 @@ public class BTNode<T> {
 		}
 		
 	}
-
+	/* public T getPosition() 
+	 * @Descriptions 
+	 * 		to get position from node tree. 
+	 * @Parameter
+	 * @Precondition
+	 * @Postcondition
+	 * @Return : position of  node.
+	 * @Thorws 	: null if position is null.
+	 * */
 	public T getPosition() {
 		return position;
 	}
-
+	/* public void setPosition(T position)
+	 * @Descriptions 
+	 * 		to set position to node tree. 
+	 * @Parameter : position - T
+	 * @Precondition : position must not null.
+	 * @Postcondition
+	 * @Return 
+	 * @Thorws 	
+	 * */
 	public void setPosition(T position) {
 		this.position = position;
 	}
