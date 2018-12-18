@@ -20,15 +20,15 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class EmailUtil {
-	
+
 	private final static String PASSWORD = "qvPK4nUmFc2W";
 	private final static String FROM_EMAIL = "smtpjavatest@gmail.com";
-	
-	
-	
+
+
+
 
 	public static void sendEmail(Session session, String toEmail, String subject, String bodyText) {
-	
+
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("No_Reply@gmail.com",false));
@@ -43,9 +43,9 @@ public class EmailUtil {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * @desc
 	 * 	will generate a new session object that has the ability to send messages using TLS authentication
@@ -58,25 +58,25 @@ public class EmailUtil {
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
-		
+
 		Session session = Session.getInstance(props,
 				new Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(FROM_EMAIL, PASSWORD);
 					}
 		});
-		
+
 		return session;
 	}
-	
-	
+
+
 	/**
 	 * @desc
 	 * 	sends an email to the targetEmail address with an attachment
 	 * @param session
 	 * 	the session object recommend using getTLSSession()
 	 * @param targetEmail
-	 * 	the email address of the person you want to send a message to 
+	 * 	the email address of the person you want to send a message to
 	 * @param subject
 	 * 	the subject line of the email
 	 * @param body
@@ -94,33 +94,24 @@ public class EmailUtil {
 			msg.setSubject(subject, "UTF-8");
 			msg.setSentDate(new Date());
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(targetEmail,false));
-			
+
 			BodyPart messagePart = new MimeBodyPart();
 			messagePart.setText(body);
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(messagePart);
-			
+
 			messagePart = new MimeBodyPart();
 			DataSource source = new FileDataSource(targetFileLocation);
 			messagePart.setDataHandler(new DataHandler(source));
 			messagePart.setFileName("Results.pdf");
 			multipart.addBodyPart(messagePart);
-			
+
 			msg.setContent(multipart);
-			
+
 			Transport.send(msg);
-			
+
 		}catch (MessagingException e) {
 			e.printStackTrace();
 		}
-	}
-	
-
-	public static void main(String[]args) {
-		
-
-		sendAttachment(getTLSSession(), "will.schuss@gmail.com", "TestAttachment", "Testing", "D:/git/FinalProject/Will Smith_Response.pdf");
-
-
 	}
 }
